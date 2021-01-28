@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import css from "./header.css";
+import Button from "@material-ui/core/Button";
 
 class Header extends React.Component {
   state = {
@@ -23,7 +24,6 @@ class Header extends React.Component {
             <Link className="navbar-brand" to="/">
               Contact List
             </Link>
-
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -40,6 +40,7 @@ class Header extends React.Component {
                   </Link>
                 </li>
               </ul>
+
               <form className="form-inline my-2 my-lg-0 float-right">
                 <input
                   className="form-control mr-sm-2"

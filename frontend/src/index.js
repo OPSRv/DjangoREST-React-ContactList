@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import css from "bootstrap/dist/css/bootstrap.min.css";
-import css from "./index.css";
 
 // Include components
 import ContactList from "./components/contact-list/constact-list";
@@ -10,6 +8,7 @@ import EditContact from "./components/edit-contact/edit-contact";
 import NotFound from "./components/notFound/notFound";
 import Header from "./components/header/header";
 import AddContact from "./components/add-contact/add-contact";
+import axios from "axios";
 
 class App extends React.Component {
   URL = "http://127.0.0.1:8000/api/contacts/";
@@ -43,17 +42,30 @@ class App extends React.Component {
   };
 
   async SaveData(newList) {
-    await fetch(this.URL, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(newList),
-    })
-      .then((responce) => {
-        console.log("Responce => ", responce);
-      })
-      .catch((err) => console.log(err));
+    // await fetch(this.URL, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(newList),
+    // })
+    //   .then((responce) => {
+    //     console.log("Responce => ", responce);
+    //   })
+    //   .catch((err) => console.log(err));
+    // let raw = JSON.stringify(newList);
+    // let requestOptions = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: raw,
+    // };
+    // fetch("http://127.0.0.1:8000/api/contacts/", requestOptions)
+    //   .then((response) => response.text())
+    //   .then((result) => console.log(result))
+    //   .catch((error) => console.log("error", error));
+    // axios.post("http://127.0.0.1:8000/api/contacts/", { newList });
   }
 
   onSearch = (contactName) => {

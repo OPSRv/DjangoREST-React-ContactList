@@ -6,6 +6,3 @@ router = routers.DefaultRouter()
 router.register('api/contacts', ContactListViewSet, "ContactListSet")
 
 urlpatterns = router.urls
-
-
-# ContactListViewSet
