@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "./index.css";
+// import css from "bootstrap/dist/css/bootstrap.min.css";
+import css from "./index.css";
 
 // Include components
 import ContactList from "./components/contact-list/constact-list";

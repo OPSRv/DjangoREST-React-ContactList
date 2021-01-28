@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import "./contact-list.css";
+import css from "./contact-list.css";
 
 // Include Contact item
 import ContactItem from "./contact-item/contact-item";
