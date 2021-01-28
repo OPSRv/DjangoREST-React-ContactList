@@ -4,10 +4,10 @@ from .models import ContactListModel
 
 
 class ContactListAdmin(admin.ModelAdmin):
-    list_display = ('id', "name", "surname", "role",
-                    "avatar", "status", "email", "gender")
+    list_display = ('id', "name", "phone", "image",
+                    "gender", "email", "address", "star")
     list_filter = ("name",)
-    list_filter = ("surname",)
+    list_filter = ("name",)
     list_per_page = 300
 
 

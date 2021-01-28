@@ -1,63 +1,3 @@
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 10:121-141 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 11:504-524 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 12:312-332 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 13:15-35 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 16:248-268 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 19:56-76 */
-
-/*! CommonJS bailout: exports.unstable_shouldYield(...) prevents optimization as exports is passed as call context at 16:106-134 */
-
-/*! CommonJS bailout: module.exports is used directly at 103:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 12:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 13:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 15:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 16:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 18:2-16 */
-
-/*! CommonJS bailout: module.exports is used directly at 19:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 22:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 23:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 27:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 328:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 52:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 53:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 57:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 5:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 65:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 95:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 98:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 9:0-14 */
-
 /*! default exports */
 
 /*! dynamic exports */
@@ -179,8 +119,6 @@
 /*! export __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-dom/cjs/react-dom.production.min.js .__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED */
 
 /*! export __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react/cjs/react.production.min.js .__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED */
-
-/*! export __esModule [maybe provided (runtime-defined)] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/axios/lib/axios.js .__esModule */
 
 /*! export __esModule [not provided] [no usage info] [missing usage info prevents renaming] */
 
@@ -416,8 +354,6 @@
 
 /*! export unstable_wrapCallback [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/scheduler/cjs/scheduler.production.min.js .unstable_wrapCallback */
 
-/*! export updateContactList [provided] [no usage info] [missing usage info prevents renaming] */
-
 /*! export useCallback [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export useCallback [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react/cjs/react.production.min.js .useCallback */
@@ -488,9 +424,9 @@
 
 /*! namespace exports */
 
-/*! other exports [maybe provided (runtime-defined)] [no usage info] -> ./node_modules/axios/lib/axios.js */
-
 /*! other exports [not provided] [no usage info] */
+
+/*! runtime requirements:  */
 
 /*! runtime requirements: __webpack_exports__ */
 
@@ -499,6 +435,10 @@
 /*! runtime requirements: __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
 
 /*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.d, __webpack_require__.n, __webpack_require__.r, __webpack_require__.* */
+
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
 
 /*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_exports__, __webpack_require__.r, __webpack_require__.g, __webpack_require__.d, __webpack_require__.* */
 
@@ -520,26 +460,6 @@
   !*** ./src/index.js ***!
   \**********************/
 
-/*!*******************************!*\
-  !*** ./src/components/App.js ***!
-  \*******************************/
-
-/*!*******************************!*\
-  !*** ./src/components/Ops.js ***!
-  \*******************************/
-
-/*!************************************!*\
-  !*** ./src/Services/api-config.js ***!
-  \************************************/
-
-/*!************************************!*\
-  !*** ./src/components/HomePage.js ***!
-  \************************************/
-
-/*!*************************************!*\
-  !*** ./node_modules/axios/index.js ***!
-  \*************************************/
-
 /*!*************************************!*\
   !*** ./node_modules/react/index.js ***!
   \*************************************/
@@ -552,18 +472,6 @@
   !*** ./node_modules/react-is/index.js ***!
   \****************************************/
 
-/*!****************************************!*\
-  !*** ./src/components/RoomJoinPage.js ***!
-  \****************************************/
-
-/*!*****************************************!*\
-  !*** ./node_modules/axios/lib/axios.js ***!
-  \*****************************************/
-
-/*!*****************************************!*\
-  !*** ./node_modules/axios/lib/utils.js ***!
-  \*****************************************/
-
 /*!*****************************************!*\
   !*** ./node_modules/react-dom/index.js ***!
   \*****************************************/
@@ -572,17 +480,17 @@
   !*** ./node_modules/scheduler/index.js ***!
   \*****************************************/
 
+/*!*****************************************!*\
+  !*** ./src/components/header/header.js ***!
+  \*****************************************/
+
 /*!******************************************!*\
   !*** ./node_modules/prop-types/index.js ***!
   \******************************************/
 
 /*!******************************************!*\
-  !*** ./src/components/CreateRoomPage.js ***!
+  !*** ./src/components/header/header.css ***!
   \******************************************/
-
-/*!********************************************!*\
-  !*** ./node_modules/axios/lib/defaults.js ***!
-  \********************************************/
 
 /*!*********************************************!*\
   !*** ./node_modules/history/esm/history.js ***!
@@ -592,109 +500,41 @@
   !*** ./node_modules/object-assign/index.js ***!
   \*********************************************/
 
-/*!**********************************************!*\
-  !*** ./node_modules/axios/lib/core/Axios.js ***!
-  \**********************************************/
+/*!*********************************************!*\
+  !*** ./src/components/notFound/notFound.js ***!
+  \*********************************************/
 
 /*!**********************************************!*\
   !*** ./node_modules/path-to-regexp/index.js ***!
   \**********************************************/
 
-/*!***********************************************!*\
-  !*** ./node_modules/axios/lib/core/settle.js ***!
-  \***********************************************/
-
-/*!************************************************!*\
-  !*** ./node_modules/axios/lib/adapters/xhr.js ***!
-  \************************************************/
-
-/*!************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/bind.js ***!
-  \************************************************/
-
-/*!*************************************************!*\
-  !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
-  \*************************************************/
-
-/*!**************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/spread.js ***!
-  \**************************************************/
-
 /*!***************************************************!*\
-  !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
+  !*** ./src/components/add-contact/add-contact.js ***!
   \***************************************************/
-
-/*!***************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/cookies.js ***!
-  \***************************************************/
-
-/*!****************************************************!*\
-  !*** ./node_modules/axios/lib/core/createError.js ***!
-  \****************************************************/
-
-/*!****************************************************!*\
-  !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
-  \****************************************************/
-
-/*!****************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
-  \****************************************************/
-
-/*!*****************************************************!*\
-  !*** ./node_modules/axios/lib/core/enhanceError.js ***!
-  \*****************************************************/
 
 /*!*****************************************************!*\
   !*** ./node_modules/value-equal/esm/value-equal.js ***!
   \*****************************************************/
 
+/*!*****************************************************!*\
+  !*** ./src/components/edit-contact/edit-contact.js ***!
+  \*****************************************************/
+
 /*!******************************************************!*\
-  !*** ./node_modules/axios/lib/cancel/CancelToken.js ***!
+  !*** ./src/components/contact-list/constact-list.js ***!
   \******************************************************/
 
 /*!******************************************************!*\
-  !*** ./node_modules/axios/lib/core/buildFullPath.js ***!
+  !*** ./src/components/contact-list/contact-list.css ***!
   \******************************************************/
-
-/*!******************************************************!*\
-  !*** ./node_modules/axios/lib/core/transformData.js ***!
-  \******************************************************/
-
-/*!*******************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
-  \*******************************************************/
 
 /*!*******************************************************!*\
   !*** ./node_modules/react-router/esm/react-router.js ***!
   \*******************************************************/
 
 /*!********************************************************!*\
-  !*** ./node_modules/axios/lib/core/dispatchRequest.js ***!
-  \********************************************************/
-
-/*!********************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
-  \********************************************************/
-
-/*!********************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/parseHeaders.js ***!
-  \********************************************************/
-
-/*!********************************************************!*\
   !*** ./node_modules/react/cjs/react.production.min.js ***!
   \********************************************************/
-
-/*!*********************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
-  \*********************************************************/
-
-/*!***********************************************************!*\
-  !*** ./node_modules/axios/lib/core/InterceptorManager.js ***!
-  \***********************************************************/
-
-/*!***********************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
-  \***********************************************************/
 
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
@@ -711,10 +551,6 @@
 /*!**************************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.production.min.js ***!
   \**************************************************************/
-
-/*!***************************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
-  \***************************************************************/
 
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
@@ -742,6 +578,10 @@
 
 /*!******************************************************************!*\
   !*** ./node_modules/mini-create-react-context/dist/esm/index.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./src/components/contact-list/contact-item/contact-item.js ***!
   \******************************************************************/
 
 /*!*********************************************************************************!*\
