@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import css from "./add-contact.css";
 
 class AddContact extends React.Component {
   state = {
@@ -34,12 +35,19 @@ class AddContact extends React.Component {
       address: event.target.value,
     });
   };
+  getGender = (event) => {
+    this.setState({
+      gender: event.target.value,
+    });
+  };
 
   getEmail = (event) => {
     this.setState({
       email: event.target.value,
     });
   };
+
+  // #save(addContact)
   onSendData = (event) => {
     event.preventDefault();
     const { id, name, address, phone, email, image, gender } = this.state;
@@ -56,16 +64,18 @@ class AddContact extends React.Component {
       isRedirect: true,
     });
   };
+
   render() {
     console.log("currentContact =>", this.props.currentContact);
     const { name, address, phone, email, image, gender } = this.state;
     console.log("Avatar => ", image);
-    const URL = `https://api.randomuser.me/portraits/${gender}/${image}.jpg`;
+    console.log(this.image === undefined);
+    const URL = `https://randomuser.me/api/portraits/${gender}/${image}.jpg`;
     if (this.state.isRedirect) {
       return <Redirect to="/" />;
     }
     return (
-      <div className="container">
+      <div className="container ops">
         <div className="row">
           <div className="col-md-10">
             <form onSubmit={this.onSendData}>
@@ -75,6 +85,7 @@ class AddContact extends React.Component {
                 className="form-control"
                 onChange={this.getName}
                 required
+                placeholder="Enter name"
               />
               <input
                 type="text"
@@ -82,6 +93,15 @@ class AddContact extends React.Component {
                 className="form-control"
                 onChange={this.getAddress}
                 required
+                placeholder="Enter address"
+              />
+              <input
+                type="text"
+                value={gender}
+                className="form-control"
+                onChange={this.getGender}
+                required
+                placeholder="Enter gender"
               />
               <input
                 type="number"
@@ -93,11 +113,12 @@ class AddContact extends React.Component {
                 required
               />
               <input
-                type="text"
+                type="email"
                 value={email}
                 className="form-control"
                 onChange={this.getEmail}
                 required
+                placeholder="Enter email"
               />
               <input
                 type="text"
@@ -105,6 +126,7 @@ class AddContact extends React.Component {
                 className="form-control"
                 onChange={this.getTelNumber}
                 required
+                placeholder="Enter phone"
               />
               <button className="btn btn-success" type="submit">
                 Save chages
@@ -112,13 +134,18 @@ class AddContact extends React.Component {
             </form>
           </div>
           <div className="col-md-2">
-            {image.length !== 0 ? (
+            {image !== undefined ? (
               <img
                 className="rounded-circle mx-auto d-block img-fluid edit_photo"
                 src={URL}
               />
             ) : (
               <h3>No foto</h3>
+            )}
+            {gender !== "women" && "men" ? (
+              <h5>gender: women or men</h5>
+            ) : (
+              <h5>ok</h5>
             )}
           </div>
         </div>

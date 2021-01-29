@@ -124,6 +124,7 @@ class App extends React.Component {
     gender
   ) => {
     const index = this.state.List.findIndex((elem) => elem.id === id);
+
     let editedContact = {
       id: id,
       name: name,
@@ -134,6 +135,7 @@ class App extends React.Component {
       email: email,
       star: false,
     };
+
     const partOne = this.state.List.slice(0, index);
     const partTwo = this.state.List.slice(index + 1);
     const newList = [...partOne, editedContact, ...partTwo];
