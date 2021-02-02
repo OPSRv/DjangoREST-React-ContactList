@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -8,7 +8,6 @@ import EditContact from "./components/edit-contact/edit-contact";
 import NotFound from "./components/notFound/notFound";
 import Header from "./components/header/header";
 import AddContact from "./components/add-contact/add-contact";
-import axios from "axios";
 import ContactDataService from "./components/services/Service";
 
 class App extends React.Component {
@@ -22,6 +21,8 @@ class App extends React.Component {
   componentDidMount() {
     this.UpdateContactList();
   }
+
+  // componentDidUpdate() {}
 
   UpdateContactList = () => {
     fetch(this.URL)
@@ -79,6 +80,7 @@ class App extends React.Component {
     const partOne = this.state.List.slice(0, index);
     const partTwo = this.state.List.slice(index + 1);
     const newList = [...partOne, ...partTwo];
+    // this.SaveData(newList);
     this.setState((state) => {
       return {
         List: newList,

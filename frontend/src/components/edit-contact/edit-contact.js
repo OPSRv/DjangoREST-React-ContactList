@@ -49,6 +49,7 @@ class EditContact extends React.Component {
     console.log(data, "data");
     delete data.isRedirect;
     data.star = true;
+
     ContactDataService.update(id, data).then((response) =>
       console.log(response, "response")
     );

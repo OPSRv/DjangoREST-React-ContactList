@@ -43,6 +43,7 @@ class AddContact extends React.Component {
     event.preventDefault();
 
     const { name, address, phone, email, image, gender } = this.state;
+    console.log(this.state);
     const data = {
       name: name,
       phone: phone,
@@ -53,12 +54,11 @@ class AddContact extends React.Component {
       star: true,
     };
 
-    ContactDataService.post(
-      "http://127.0.0.1:8000/api/contacts",
-      data
-    ).then((response) => console.log(response));
-    this.setState({
-      isRedirect: true,
+    ContactDataService.create(data).then((response) => {
+      this.setState({
+        isRedirect: true,
+      });
+      console.log(response);
     });
   };
 
