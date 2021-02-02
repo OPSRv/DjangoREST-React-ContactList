@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import axios from "axios";
+import ContactDataService from "../services/Service";
 
 class AddContact extends React.Component {
   state = {};
@@ -53,10 +53,10 @@ class AddContact extends React.Component {
       star: true,
     };
 
-    axios
-      .post("http://127.0.0.1:8000/api/contacts", data)
-      .then((response) => console.log(response));
-
+    ContactDataService.post(
+      "http://127.0.0.1:8000/api/contacts",
+      data
+    ).then((response) => console.log(response));
     this.setState({
       isRedirect: true,
     });

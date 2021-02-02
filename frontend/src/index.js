@@ -9,6 +9,7 @@ import NotFound from "./components/notFound/notFound";
 import Header from "./components/header/header";
 import AddContact from "./components/add-contact/add-contact";
 import axios from "axios";
+import ContactDataService from "./components/services/Service";
 
 class App extends React.Component {
   URL = "http://127.0.0.1:8000/api/contacts";
@@ -71,13 +72,13 @@ class App extends React.Component {
     });
     this.SaveData(this.state.List);
   };
-  onDeleteContact = (id) => {
-    const index = this.state.List.findIndex((elem) => elem.id === id);
 
+  onDeleteContact = (id) => {
+    ContactDataService.delete(id);
+    const index = this.state.List.findIndex((elem) => elem.id === id);
     const partOne = this.state.List.slice(0, index);
     const partTwo = this.state.List.slice(index + 1);
     const newList = [...partOne, ...partTwo];
-    this.SaveData(newList);
     this.setState((state) => {
       return {
         List: newList,

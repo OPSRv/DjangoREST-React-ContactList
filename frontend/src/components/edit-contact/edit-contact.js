@@ -1,6 +1,5 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import axios from "axios";
 import ContactDataService from "../services/Service";
 
 class EditContact extends React.Component {
@@ -46,7 +45,6 @@ class EditContact extends React.Component {
   onSendData = (event) => {
     event.preventDefault();
     const { id, name, address, phone, email, image, gender } = this.state;
-
     const data = this.state;
     console.log(data, "data");
     delete data.isRedirect;
@@ -54,13 +52,12 @@ class EditContact extends React.Component {
     ContactDataService.update(id, data).then((response) =>
       console.log(response, "response")
     );
-
     this.setState({
       isRedirect: true,
     });
   };
+
   render() {
-    // console.log("currentContact =>", this.props.currentContact);
     const { name, address, phone, email, image, gender } = this.state;
     const URL = `https://api.randomuser.me/portraits/${gender}/${image}.jpg`;
     if (this.state.isRedirect) {
