@@ -11,7 +11,7 @@ import AddContact from "./components/add-contact/add-contact";
 import axios from "axios";
 
 class App extends React.Component {
-  URL = "http://127.0.0.1:8000/api/contacts/";
+  URL = "http://127.0.0.1:8000/api/contacts";
   state = {
     List: [],
     currentContact: "",
@@ -43,7 +43,7 @@ class App extends React.Component {
 
   async SaveData(newList) {
     await fetch(this.URL, {
-      method: "GET",
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
       },

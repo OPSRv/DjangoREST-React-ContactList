@@ -54,7 +54,7 @@ class AddContact extends React.Component {
     };
 
     axios
-      .post("http://127.0.0.1:8000/api/contacts/", data)
+      .post("http://127.0.0.1:8000/api/contacts", data)
       .then((response) => console.log(response));
 
     this.setState({
