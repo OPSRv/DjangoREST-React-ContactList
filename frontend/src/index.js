@@ -42,17 +42,9 @@ class App extends React.Component {
   };
 
   async SaveData(newList) {
-    await fetch(this.URL, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(newList),
-    })
-      .then((responce) => {
-        console.log("Responce => ", responce);
-      })
-      .catch((err) => console.log(err));
+    await axios
+      .put(this.URL, newList)
+      .then((response) => console.log(response));
   }
 
   onSearch = (contactName) => {
@@ -158,8 +150,8 @@ class App extends React.Component {
             exact
             render={() => (
               <EditContact
-              // currentContact={this.state.currentContact}
-              // onEditCurrentContact={this.onEditCurrentContact}
+                currentContact={this.state.currentContact}
+                onEditCurrentContact={this.onEditCurrentContact}
               />
             )}
           />
