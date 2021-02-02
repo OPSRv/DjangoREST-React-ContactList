@@ -1,18 +1,9 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import css from "./add-contact.css";
+import axios from "axios";
 
 class AddContact extends React.Component {
-  state = {
-    id: this.props.currentContact.id,
-    name: this.props.currentContact.name,
-    address: this.props.currentContact.address,
-    gender: this.props.currentContact.gender,
-    phone: this.props.currentContact.phone,
-    email: this.props.currentContact.email,
-    image: this.props.currentContact.image,
-    isRedirect: false,
-  };
+  state = {};
 
   getAvatar = (event) => {
     this.setState({
@@ -50,16 +41,22 @@ class AddContact extends React.Component {
   // #save(addContact)
   onSendData = (event) => {
     event.preventDefault();
-    const { id, name, address, phone, email, image, gender } = this.state;
-    this.props.onEditCurrentContact(
-      id,
-      name,
-      address,
-      phone,
-      email,
-      image,
-      gender
-    );
+
+    const { name, address, phone, email, image, gender } = this.state;
+    const data = {
+      name: name,
+      phone: phone,
+      image: image,
+      gender: gender,
+      address: address,
+      email: email,
+      star: true,
+    };
+
+    axios
+      .post("http://127.0.0.1:8000/api/contacts/", data)
+      .then((response) => console.log(response));
+
     this.setState({
       isRedirect: true,
     });
@@ -75,7 +72,7 @@ class AddContact extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="container ops">
+      <div className="container">
         <div className="row">
           <div className="col-md-10">
             <form onSubmit={this.onSendData}>

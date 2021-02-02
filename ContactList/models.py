@@ -1,6 +1,3 @@
-
-
-
 from django.db import models
 
 class ContactListModel(models.Model):

@@ -42,30 +42,17 @@ class App extends React.Component {
   };
 
   async SaveData(newList) {
-    // await fetch(this.URL, {
-    //   method: "PUT",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(newList),
-    // })
-    //   .then((responce) => {
-    //     console.log("Responce => ", responce);
-    //   })
-    //   .catch((err) => console.log(err));
-    // let raw = JSON.stringify(newList);
-    // let requestOptions = {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    //   body: raw,
-    // };
-    // fetch("http://127.0.0.1:8000/api/contacts/", requestOptions)
-    //   .then((response) => response.text())
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log("error", error));
-    // axios.post("http://127.0.0.1:8000/api/contacts/", { newList });
+    await fetch(this.URL, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newList),
+    })
+      .then((responce) => {
+        console.log("Responce => ", responce);
+      })
+      .catch((err) => console.log(err));
   }
 
   onSearch = (contactName) => {
@@ -171,21 +158,12 @@ class App extends React.Component {
             exact
             render={() => (
               <EditContact
-                currentContact={this.state.currentContact}
-                onEditCurrentContact={this.onEditCurrentContact}
+              // currentContact={this.state.currentContact}
+              // onEditCurrentContact={this.onEditCurrentContact}
               />
             )}
           />
-          <Route
-            path="/add"
-            exact
-            render={() => (
-              <AddContact
-                currentContact={this.state.currentContact}
-                onEditCurrentContact={this.onEditCurrentContact}
-              />
-            )}
-          />
+          <Route path="/add" exact render={() => <AddContact />} />
           <Route component={NotFound} />
         </Switch>
       </Router>

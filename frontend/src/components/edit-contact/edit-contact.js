@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class EditContact extends React.Component {
   state = {
@@ -42,16 +43,24 @@ class EditContact extends React.Component {
   };
   onSendData = (event) => {
     event.preventDefault();
+    // const { id, name, address, phone, email, image, gender } = this.state;
+    // event.preventDefault();
     const { id, name, address, phone, email, image, gender } = this.state;
-    this.props.onEditCurrentContact(
-      id,
-      name,
-      address,
-      phone,
-      email,
-      image,
-      gender
-    );
+    const data = {
+      id: id,
+      name: name,
+      phone: phone,
+      image: image,
+      gender: gender,
+      address: address,
+      email: email,
+      star: true,
+    };
+    console.log(data);
+    axios.put(`http://127.0.0.1:8000/api/contacts/${id}`, data);
+
+    console.log(this.state);
+
     this.setState({
       isRedirect: true,
     });
@@ -60,7 +69,7 @@ class EditContact extends React.Component {
     console.log("currentContact =>", this.props.currentContact);
     const { name, address, phone, email, image, gender } = this.state;
     console.log("Avatar => ", image);
-    const URL = `https://api.randomuser.me/portraits/${gender}/${image}.jpg`;
+    const URL = `https://randomuser.me/api/portraits/${gender}/${image}.jpg`;
     if (this.state.isRedirect) {
       return <Redirect to="/" />;
     }
