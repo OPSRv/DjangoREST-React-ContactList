@@ -51,7 +51,7 @@ class AddContact extends React.Component {
       gender: gender,
       address: address,
       email: email,
-      star: true,
+      star: false,
     };
 
     ContactDataService.create(data).then((response) => {

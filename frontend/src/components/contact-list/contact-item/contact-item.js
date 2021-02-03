@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "./contact-item.css";
+import ContactDataService from "../../services/Service";
 
 class ContactItem extends React.Component {
   render() {
@@ -12,19 +12,18 @@ class ContactItem extends React.Component {
       phone,
       email,
       image,
-      favorite,
-      isFavorite,
+      star,
+      isStar,
       editContact,
       onDeleteContact,
     } = this.props;
-
     const URL = `https://api.randomuser.me/portraits/med/${gender}/${image}.jpg`;
-
-    let isNotFavorite = "far fa-star ";
-    if (favorite) {
-      isNotFavorite = "fas fa-star ";
+    // console.log(this.props.star);
+    let isNotstar = "far fa-star ";
+    if (star) {
+      isNotstar = "fas fa-star ";
     } else {
-      isNotFavorite = "far fa-star";
+      isNotstar = "far fa-star";
     }
     return (
       <li className="list-group-item">
@@ -38,9 +37,9 @@ class ContactItem extends React.Component {
           </div>
           <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
             <span
-              className={`${isNotFavorite} fa-2x text-success float-right pulse`}
+              className={`${isNotstar} fa-2x text-success float-right pulse`}
               title="online now"
-              onClick={isFavorite}
+              onClick={isStar}
             ></span>
             <Link
               to="/edit"

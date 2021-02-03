@@ -1,15 +1,9 @@
 import React, { Fragment } from "react";
-import css from "./contact-list.css";
 
 // Include Contact item
 import ContactItem from "./contact-item/contact-item";
 
-const ContactList = ({
-  ContactList,
-  isFavorite,
-  editContact,
-  onDeleteContact,
-}) => {
+const ContactList = ({ ContactList, isStar, editContact, onDeleteContact }) => {
   const list = ContactList.map((item) => {
     return (
       <ContactItem
@@ -20,8 +14,9 @@ const ContactList = ({
         image={item.image}
         phone={item.phone}
         email={item.email}
-        favorite={item.favorite}
-        isFavorite={() => isFavorite(item.id)}
+        star={item.star}
+        star={item.star}
+        isStar={() => isStar(item.id)}
         editContact={() => editContact(item.id)}
         onDeleteContact={() => onDeleteContact(item.id)}
       />

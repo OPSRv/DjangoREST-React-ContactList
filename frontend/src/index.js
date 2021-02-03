@@ -9,6 +9,7 @@ import NotFound from "./components/notFound/notFound";
 import Header from "./components/header/header";
 import AddContact from "./components/add-contact/add-contact";
 import ContactDataService from "./components/services/Service";
+import axios from "axios";
 
 class App extends React.Component {
   URL = "http://127.0.0.1:8000/api/contacts";
@@ -64,14 +65,17 @@ class App extends React.Component {
     });
   };
 
-  isFavorite = (id) => {
+  isStar = (id) => {
     const index = this.state.List.findIndex((elem) => elem.id === id);
     const tmp = this.state.List.slice();
-    tmp[index].favorite = !tmp[index].favorite;
+    tmp[index].star = !tmp[index].star;
     this.setState({
-      favorite: this.tmp,
+      star: this.tmp,
     });
-    this.SaveData(this.state.List);
+    const data = tmp[index];
+    ContactDataService.update(data.id, data).then((response) =>
+      console.log(response, "response")
+    );
   };
 
   onDeleteContact = (id) => {
@@ -80,7 +84,6 @@ class App extends React.Component {
     const partOne = this.state.List.slice(0, index);
     const partTwo = this.state.List.slice(index + 1);
     const newList = [...partOne, ...partTwo];
-    // this.SaveData(newList);
     this.setState((state) => {
       return {
         List: newList,
@@ -142,7 +145,7 @@ class App extends React.Component {
             render={() => (
               <ContactList
                 ContactList={showContacts}
-                isFavorite={this.isFavorite}
+                isStar={this.isStar}
                 editContact={this.editContact}
                 onDeleteContact={this.onDeleteContact}
               />
