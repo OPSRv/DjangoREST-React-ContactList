@@ -23,8 +23,6 @@ class App extends React.Component {
     this.UpdateContactList();
   }
 
-  // componentDidUpdate() {}
-
   UpdateContactList = () => {
     fetch(this.URL)
       .then((responce) => {
@@ -35,6 +33,7 @@ class App extends React.Component {
           this.setState({
             List: [],
           });
+          // console.log(List, "UpdateContactList - List");
         } else {
           this.setState({
             List: data,
@@ -43,12 +42,6 @@ class App extends React.Component {
       })
       .catch((err) => console.log(err));
   };
-
-  async SaveData(newList) {
-    await axios
-      .put(this.URL, newList)
-      .then((response) => console.log(response));
-  }
 
   onSearch = (contactName) => {
     this.setState({
@@ -73,13 +66,10 @@ class App extends React.Component {
       star: this.tmp,
     });
     const data = tmp[index];
-    ContactDataService.update(data.id, data).then((response) =>
-      console.log(response, "response")
-    );
+    ContactDataService.update(data.id, data);
   };
 
   onDeleteContact = (id) => {
-    ContactDataService.delete(id);
     const index = this.state.List.findIndex((elem) => elem.id === id);
     const partOne = this.state.List.slice(0, index);
     const partTwo = this.state.List.slice(index + 1);
@@ -89,6 +79,7 @@ class App extends React.Component {
         List: newList,
       };
     });
+    ContactDataService.delete(id);
   };
 
   editContact = (id) => {
@@ -97,37 +88,22 @@ class App extends React.Component {
     this.setState({
       currentContact: currentContact,
     });
+    console.log(id, "id");
   };
 
-  onEditCurrentContact = (
-    id,
-    name,
-    address,
-    telnumber,
-    email,
-    image,
-    gender
-  ) => {
+  onEditCurrentContact = (newEditContact) => {
+    const id = newEditContact.id;
     const index = this.state.List.findIndex((elem) => elem.id === id);
-
-    let editedContact = {
-      id: id,
-      name: name,
-      address: address,
-      image: image,
-      phone: telnumber,
-      gender: gender,
-      email: email,
-      star: false,
-    };
-
     const partOne = this.state.List.slice(0, index);
     const partTwo = this.state.List.slice(index + 1);
-    const newList = [...partOne, editedContact, ...partTwo];
-    this.SaveData(newList);
+    const newList = [...partOne, newEditContact, ...partTwo];
     this.setState({
       List: newList,
     });
+  };
+
+  addContact = (newContact) => {
+    this.state.List.push(newContact);
   };
 
   render() {
@@ -161,7 +137,11 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path="/add" exact render={() => <AddContact />} />
+          <Route
+            path="/add"
+            exact
+            render={() => <AddContact addContact={this.addContact} />}
+          />
           <Route component={NotFound} />
         </Switch>
       </Router>

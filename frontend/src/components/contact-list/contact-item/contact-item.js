@@ -17,7 +17,8 @@ class ContactItem extends React.Component {
       editContact,
       onDeleteContact,
     } = this.props;
-    const URL = `https://api.randomuser.me/portraits/med/${gender}/${image}.jpg`;
+
+    const URL = `https://randomuser.me/api/portraits/${gender}/${image}.jpg`;
     // console.log(this.props.star);
     let isNotstar = "far fa-star ";
     if (star) {
@@ -25,6 +26,7 @@ class ContactItem extends React.Component {
     } else {
       isNotstar = "far fa-star";
     }
+    // console.log(this.props, "props contact ");
     return (
       <li className="list-group-item">
         <div className="row w-100">

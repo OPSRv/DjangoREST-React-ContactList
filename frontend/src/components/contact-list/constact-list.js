@@ -3,7 +3,13 @@ import React, { Fragment } from "react";
 // Include Contact item
 import ContactItem from "./contact-item/contact-item";
 
-const ContactList = ({ ContactList, isStar, editContact, onDeleteContact }) => {
+const ContactList = ({
+  ContactList,
+  isStar,
+  editContact,
+  onDeleteContact,
+  addContact,
+}) => {
   const list = ContactList.map((item) => {
     return (
       <ContactItem
@@ -19,6 +25,7 @@ const ContactList = ({ ContactList, isStar, editContact, onDeleteContact }) => {
         isStar={() => isStar(item.id)}
         editContact={() => editContact(item.id)}
         onDeleteContact={() => onDeleteContact(item.id)}
+        addContact={() => addContact(item.id)}
       />
     );
   });

@@ -3,7 +3,16 @@ import { Redirect } from "react-router-dom";
 import ContactDataService from "../services/Service";
 
 class AddContact extends React.Component {
-  state = {};
+  state = {
+    name: "Jack",
+    phone: "100223",
+    image: "99",
+    gender: "women",
+    address: "Rivne",
+    email: "Jack@Jack.Jack",
+    star: false,
+    isRedirect: false,
+  };
 
   getAvatar = (event) => {
     this.setState({
@@ -41,10 +50,9 @@ class AddContact extends React.Component {
   // #save(addContact)
   onSendData = (event) => {
     event.preventDefault();
+    const { name, phone, image, gender, address, email, star } = this.state;
 
-    const { name, address, phone, email, image, gender } = this.state;
-    console.log(this.state);
-    const data = {
+    let newContact = {
       name: name,
       phone: phone,
       image: image,
@@ -53,20 +61,20 @@ class AddContact extends React.Component {
       email: email,
       star: false,
     };
+    this.props.addContact(newContact);
+    ContactDataService.create(newContact);
+    newContact = {};
 
-    ContactDataService.create(data).then((response) => {
-      this.setState({
-        isRedirect: true,
-      });
-      console.log(response);
+    this.setState({
+      isRedirect: true,
     });
   };
 
   render() {
-    console.log("currentContact =>", this.props.currentContact);
+    // console.log(this.state, "add-contact RENDER ");
+    // console.log(this.state.isRedirect, "this.state.isRedirect");
+    // console.log(this.props, "this.props - RENDER ADD CONTACT");
     const { name, address, phone, email, image, gender } = this.state;
-    console.log("Avatar => ", image);
-    console.log(this.image === undefined);
     const URL = `https://randomuser.me/api/portraits/${gender}/${image}.jpg`;
     if (this.state.isRedirect) {
       return <Redirect to="/" />;

@@ -11,6 +11,7 @@ class EditContact extends React.Component {
     phone: this.props.currentContact.phone,
     email: this.props.currentContact.email,
     image: this.props.currentContact.image,
+    star: this.props.currentContact.star,
     isRedirect: false,
   };
 
@@ -44,15 +45,15 @@ class EditContact extends React.Component {
 
   onSendData = (event) => {
     event.preventDefault();
-    const { id, name, address, phone, email, image, gender } = this.state;
+    const { id, name, address, phone, email, image, gender, star } = this.state;
     const data = this.state;
-    console.log(data, "data");
     delete data.isRedirect;
-    // data.star = false;
+    console.log(data, "data -  в батьківський");
+    let newEditContact = data;
+    this.props.onEditCurrentContact(newEditContact);
 
-    ContactDataService.update(id, data).then((response) =>
-      console.log(response, "response")
-    );
+    ContactDataService.update(id, data);
+
     this.setState({
       isRedirect: true,
     });
