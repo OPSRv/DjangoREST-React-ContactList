@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ContactDataService from "../../services/Service";
+import "./contact-item.css";
 
 class ContactItem extends React.Component {
   render() {
@@ -63,7 +64,7 @@ class ContactItem extends React.Component {
               title=""
               data-original-title="5842 Hillcrest Rd"
             ></span>
-            <span className="text-muted">{address}</span>
+            <span className="text-muted address">{address}</span>
             <br />
             <span
               className="fa fa-phone fa-fw text-muted"

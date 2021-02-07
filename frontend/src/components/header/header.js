@@ -30,7 +30,7 @@ class Header extends React.Component {
                   Home <span className="sr-only">(current)</span>
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item linkasdasd">
                 <Link className="nav-link" to="/add">
                   Add contact
                 </Link>
