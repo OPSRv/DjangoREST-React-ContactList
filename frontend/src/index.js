@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./index.css";
 
 // Include components
 import ContactList from "./components/contact-list/constact-list";
@@ -103,7 +104,21 @@ class App extends React.Component {
   };
 
   addContact = (newContact) => {
-    this.state.List.push(newContact);
+    ContactDataService.create(newContact);
+    console.log(newContact.email, "newContact email");
+    let ContactList = this.state.List.map((item) => item.email);
+
+    console.log(ContactList);
+
+    let isAllValueMatched = true;
+
+    ContactList.forEach((value) => {
+      if (value === newContact) {
+        isAllValueMatched = false;
+      }
+    });
+
+    isAllValueMatched ? this.state.List.push(newContact) : console.log("false");
   };
 
   render() {
@@ -140,7 +155,12 @@ class App extends React.Component {
           <Route
             path="/add"
             exact
-            render={() => <AddContact addContact={this.addContact} />}
+            render={() => (
+              <AddContact
+                addContact={this.addContact}
+                listContact={this.state.List}
+              />
+            )}
           />
           <Route component={NotFound} />
         </Switch>

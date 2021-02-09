@@ -12,6 +12,7 @@ class AddContact extends React.Component {
     email: "Jack@Jack.Jack",
     star: false,
     isRedirect: false,
+    contactList: this.props.listContact,
   };
 
   getAvatar = (event) => {
@@ -61,21 +62,26 @@ class AddContact extends React.Component {
       email: email,
       star: false,
     };
-    this.props.addContact(newContact);
-    ContactDataService.create(newContact);
-    newContact = {};
 
+    this.props.addContact(newContact);
     this.setState({
       isRedirect: true,
     });
   };
 
   render() {
-    // console.log(this.state, "add-contact RENDER ");
-    // console.log(this.state.isRedirect, "this.state.isRedirect");
-    // console.log(this.props, "this.props - RENDER ADD CONTACT");
-    const { name, address, phone, email, image, gender } = this.state;
+    const {
+      name,
+      address,
+      phone,
+      email,
+      image,
+      gender,
+      isAllValueMatched,
+    } = this.state;
+
     const URL = `https://randomuser.me/api/portraits/${gender}/${image}.jpg`;
+
     if (this.state.isRedirect) {
       return <Redirect to="/" />;
     }

@@ -64,7 +64,7 @@ class ContactItem extends React.Component {
               title=""
               data-original-title="5842 Hillcrest Rd"
             ></span>
-            <span className="text-muted address">{address}</span>
+            <span className="address">{address}</span>
             <br />
             <span
               className="fa fa-phone fa-fw text-muted"
