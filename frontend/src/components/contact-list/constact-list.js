@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
+import "./contact-list.css";
 
-// Include Contact item
 import ContactItem from "./contact-item/contact-item";
 
 const ContactList = ({
@@ -31,17 +31,8 @@ const ContactList = ({
   });
   return (
     <Fragment>
-      <div className="container">
-        <div className="card card-default" id="card_contacts">
-          <div
-            id="contacts"
-            className="panel-collapse collapse show"
-            aria-expanded="true"
-          ></div>
-          <ul className="list-group pull-down" id="contact-list">
-            {list.length !== 0 ? list : <h2>Contact list is empty</h2>}
-          </ul>
-        </div>
+      <div class="cards">
+        {list.length !== 0 ? list : <h2>Contact list is empty</h2>}
       </div>
     </Fragment>
   );

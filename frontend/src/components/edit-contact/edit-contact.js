@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import ContactDataService from "../services/Service";
+import "./edit-contact.css";
 
 class EditContact extends React.Component {
   state = {
@@ -42,6 +43,11 @@ class EditContact extends React.Component {
       email: event.target.value,
     });
   };
+  getGender = (event) => {
+    this.setState({
+      gender: event.target.value,
+    });
+  };
 
   onSendData = (event) => {
     event.preventDefault();
@@ -67,20 +73,30 @@ class EditContact extends React.Component {
     }
     return (
       <div className="container">
+        <h1>Edit contact</h1>
         <div className="row">
-          <div className="col-md-10">
+          <div>
+            {image.length !== 0 ? (
+              <img className="edit-image" src={URL} />
+            ) : (
+              <h3>No foto</h3>
+            )}
+          </div>
+          <div className="edit-status">
             <form onSubmit={this.onSendData}>
               <input
                 type="text"
                 value={name}
-                className="form-control"
+                placeholder="name"
+                className="edit-input"
                 onChange={this.getName}
                 required
               />
               <input
                 type="text"
                 value={address}
-                className="form-control"
+                placeholder="address"
+                className="edit-input"
                 onChange={this.getAddress}
                 required
               />
@@ -89,38 +105,39 @@ class EditContact extends React.Component {
                 min="1"
                 max="99"
                 value={image}
-                className="form-control"
+                placeholder="image"
+                className="edit-input"
                 onChange={this.getAvatar}
                 required
               />
               <input
                 type="text"
                 value={email}
-                className="form-control"
+                placeholder="email"
+                className="edit-input"
                 onChange={this.getEmail}
                 required
               />
               <input
                 type="text"
                 value={phone}
-                className="form-control"
+                placeholder="phone"
+                className="edit-input"
                 onChange={this.getTelNumber}
                 required
               />
-              <button className="btn btn-success" type="submit">
+              <input
+                type="text"
+                value={gender}
+                placeholder="gender"
+                className="edit-input"
+                onChange={this.getGender}
+                required
+              />
+              <button className="btn-save" type="submit">
                 Save chages
               </button>
             </form>
-          </div>
-          <div className="col-md-2">
-            {image.length !== 0 ? (
-              <img
-                className="rounded-circle mx-auto d-block img-fluid edit_photo"
-                src={URL}
-              />
-            ) : (
-              <h3>No foto</h3>
-            )}
           </div>
         </div>
       </div>

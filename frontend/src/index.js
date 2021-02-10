@@ -10,6 +10,8 @@ import NotFound from "./components/notFound/notFound";
 import Header from "./components/header/header";
 import AddContact from "./components/add-contact/add-contact";
 import ContactDataService from "./components/services/Service";
+import Dashboard from "./components/dashboard/dashboard";
+
 import axios from "axios";
 
 class App extends React.Component {
@@ -104,21 +106,23 @@ class App extends React.Component {
   };
 
   addContact = (newContact) => {
+    this.state.List.push(newContact);
     ContactDataService.create(newContact);
-    console.log(newContact.email, "newContact email");
-    let ContactList = this.state.List.map((item) => item.email);
 
-    console.log(ContactList);
+    // console.log(newContact.email, "newContact email");
+    // let ContactList = this.state.List.map((item) => item.email);
 
-    let isAllValueMatched = true;
+    // console.log(ContactList);
 
-    ContactList.forEach((value) => {
-      if (value === newContact) {
-        isAllValueMatched = false;
-      }
-    });
+    // let isAllValueMatched = true;
 
-    isAllValueMatched ? this.state.List.push(newContact) : console.log("false");
+    // ContactList.forEach((value) => {
+    //   if (value === newContact) {
+    //     isAllValueMatched = false;
+    //   }
+    // });
+
+    // isAllValueMatched ? this.state.List.push(newContact) : console.log("false");
   };
 
   render() {
@@ -128,40 +132,39 @@ class App extends React.Component {
     );
     return (
       <Router>
-        <Header onSearch={this.onSearch} />
+        <Dashboard />
         <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <ContactList
-                ContactList={showContacts}
-                isStar={this.isStar}
-                editContact={this.editContact}
-                onDeleteContact={this.onDeleteContact}
-              />
-            )}
-          />
-          <Route
-            path="/edit"
-            exact
-            render={() => (
-              <EditContact
-                currentContact={this.state.currentContact}
-                onEditCurrentContact={this.onEditCurrentContact}
-              />
-            )}
-          />
-          <Route
-            path="/add"
-            exact
-            render={() => (
-              <AddContact
-                addContact={this.addContact}
-                listContact={this.state.List}
-              />
-            )}
-          />
+          <div class="games">
+            <Header onSearch={this.onSearch} />
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <ContactList
+                  ContactList={showContacts}
+                  isStar={this.isStar}
+                  editContact={this.editContact}
+                  onDeleteContact={this.onDeleteContact}
+                />
+              )}
+            />
+            <Route
+              path="/add"
+              exact
+              render={() => <AddContact addContact={this.addContact} />}
+            />
+
+            <Route
+              path="/edit"
+              exact
+              render={() => (
+                <EditContact
+                  currentContact={this.state.currentContact}
+                  onEditCurrentContact={this.onEditCurrentContact}
+                />
+              )}
+            />
+          </div>
           <Route component={NotFound} />
         </Switch>
       </Router>

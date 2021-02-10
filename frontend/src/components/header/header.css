@@ -1,0 +1,23 @@
+.status {
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  
+  .status input {
+    background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3)
+    );
+    border: none;
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    outline:none;
+  }
+  .contact-link{
+    text-decoration: none;
+  }
