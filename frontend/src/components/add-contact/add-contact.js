@@ -62,7 +62,6 @@ class AddContact extends React.Component {
       star: false,
     };
 
-    console.log(newContact);
     this.props.addContact(newContact);
 
     this.setState({

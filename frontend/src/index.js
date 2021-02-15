@@ -11,6 +11,7 @@ import Header from "./components/header/header";
 import AddContact from "./components/add-contact/add-contact";
 import ContactDataService from "./components/services/Service";
 import Dashboard from "./components/dashboard/dashboard";
+import Authorization from "./components/authorization/authorization";
 
 import axios from "axios";
 
@@ -108,7 +109,6 @@ class App extends React.Component {
   addContact = (newContact) => {
     this.state.List.push(newContact);
     ContactDataService.create(newContact);
-
     // console.log(newContact.email, "newContact email");
     // let ContactList = this.state.List.map((item) => item.email);
 
@@ -124,6 +124,10 @@ class App extends React.Component {
 
     // isAllValueMatched ? this.state.List.push(newContact) : console.log("false");
   };
+
+  // getAccount = (createUser) => {
+  //   console.log(createUser);
+  // };
 
   render() {
     const showContacts = this.onShowContactList(
@@ -156,13 +160,18 @@ class App extends React.Component {
 
             <Route
               path="/edit"
-              exact
               render={() => (
                 <EditContact
                   currentContact={this.state.currentContact}
                   onEditCurrentContact={this.onEditCurrentContact}
                 />
               )}
+            />
+
+            <Route
+              path="/authorization"
+              component={Authorization}
+              render={() => <Authorization />}
             />
           </div>
           <Route component={NotFound} />
@@ -173,3 +182,11 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById("app"));
+
+// incrementCounter = () => this.setState((prevState) => ({ counter: prevState.counter + 1 }));
+// const MyPureComponent = (props) => <div>Less code === less support</div>
+
+// Ошибка связанная с безопасностью. Для меня выглядит очень странно, что люди до сих пор делают эту ошибку. Очень много людей написало очень много статей на эту тему в 2017.
+// Если вы создаете ссылку с target='_blank' атрибутом не забудьте добавить к ней rel='noreferrer noopener'. Очень просто:
+
+// <a href="https://example.com" target="_blank" rel="noreferrer noopener" />

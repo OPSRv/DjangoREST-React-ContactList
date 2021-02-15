@@ -6,10 +6,23 @@ from rest_framework import status
  
 from ContactList.models import ContactListModel
 from ContactList.serializers import ContactListSerializer
-from rest_framework.decorators import api_view
+
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+
+from rest_framework.views import APIView
+from rest_framework.exceptions import PermissionDenied
+
+
+
+
+
+
 
 @api_view(['GET', 'POST', 'DELETE'])
 def contact_list(request):
+    # permission_class = permissions.IsAuthenticatedOrReadOnly
     if request.method == 'GET':
         contact = ContactListModel.objects.all()
         
@@ -65,3 +78,8 @@ def contact_list_published(request):
     if request.method == 'GET': 
         contacts_serializer = ContactListSerializer(contacts, many=True)
         return JsonResponse(contacts_serializer.data, safe=False)
+
+
+
+
+

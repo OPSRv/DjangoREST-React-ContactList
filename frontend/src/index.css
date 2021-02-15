@@ -26,7 +26,8 @@ h3 {
 #main {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
-  background: linear-gradient(to right top, #535f64, #6cdbeb);
+  min-width: 100vw;
+  background: linear-gradient(to right top, #3e92b6, #007558);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,6 +92,6 @@ h3 {
 .btn-save:hover{
   background-position: right center;
 }
-div{
-  border: 1px solid red;
-}
+/* div{
+  border: 1px solid rgba(255, 0, 0, 0.144);
+} */
