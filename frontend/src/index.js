@@ -21,6 +21,7 @@ class App extends React.Component {
     List: [],
     currentContact: "",
     findContact: "",
+    authorization: "",
   };
 
   componentDidMount() {
@@ -161,12 +162,20 @@ class App extends React.Component {
       this.state.List,
       this.state.findContact
     );
+    console.log(localStorage.token);
     return (
       <Router>
         <Dashboard />
         <Switch>
           <div class="games">
-            <Header onSearch={this.onSearch} />
+            {localStorage.token ? (
+              <Header onSearch={this.onSearch} />
+            ) : (
+              <h1></h1>
+            )}
+
+            <Route path="/authorization" render={() => <Authorization />} />
+
             <Route
               path="/"
               exact
@@ -179,6 +188,7 @@ class App extends React.Component {
                 />
               )}
             />
+
             <Route
               path="/add"
               exact
@@ -194,8 +204,6 @@ class App extends React.Component {
                 />
               )}
             />
-
-            <Route path="/authorization" render={() => <Authorization />} />
           </div>
           <Route component={NotFound} />
         </Switch>

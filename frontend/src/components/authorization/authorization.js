@@ -33,8 +33,9 @@ class Authorization extends React.Component {
 
   getAuthorization = (newAuth) => {
     let userAuth = newAuth;
-    console.log(userAuth, "userAuth - authorization");
 
+    console.log(userAuth, "userAuth - authorization");
+    localStorage.setItem("user_name", `${userAuth.username}`);
     axios({
       method: "post",
       url: "http://127.0.0.1:8000/auth/login/",
