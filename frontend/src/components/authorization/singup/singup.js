@@ -10,6 +10,7 @@ class SingUp extends React.Component {
       username: "",
       email: "",
       password: "",
+      password2: "",
       isRedirect: false,
     };
   }
@@ -29,28 +30,37 @@ class SingUp extends React.Component {
       password: event.target.value,
     });
   };
+  getPasswordConfirm = (event) => {
+    this.setState({
+      password2: event.target.value,
+    });
+  };
 
   onSendDataUs = (event) => {
     event.preventDefault();
     this.setState({
       isRedirect: true,
     });
-    const { username, email, password } = this.state;
-
-    let newUser = {
-      username: username,
-      email: email,
-      password: password,
-    };
-    console.log(newUser, "newUser SING UP");
-    this.props.getCreateAccount(newUser);
+    const { username, email, password, password2 } = this.state;
+    if (password === password2) {
+      let newUser = {
+        username: username,
+        email: email,
+        password: password,
+        password2: password2,
+      };
+      console.log(newUser, "newUser SING UP");
+      this.props.getCreateAccount(newUser);
+    } else {
+      alert("Passwords do not match");
+    }
   };
 
   render() {
     if (this.state.isRedirect) {
       return <Redirect to="/authorization" />;
     }
-    const { username, email, password } = this.state;
+    const { username, email, password, password2 } = this.state;
     return (
       <Fragment>
         <div class="login-page">
@@ -84,6 +94,17 @@ class SingUp extends React.Component {
                 onChange={this.getPassword}
                 type="password"
                 id="reg_password"
+                className="animateInput"
+                placeholder="password"
+                name="password"
+                autoComplete="new-password"
+                required
+              />
+              <input
+                value={password2}
+                onChange={this.getPasswordConfirm}
+                type="password"
+                id="reg_password2"
                 className="animateInput"
                 placeholder="password"
                 name="password"

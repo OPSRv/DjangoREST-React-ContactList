@@ -17,10 +17,10 @@ class Authorization extends React.Component {
   getCreateAccount = (newUser) => {
     console.log(newUser, "newUser - authorization");
     let createUser = newUser;
-
+    console.log(createUser);
     axios({
       method: "post",
-      url: "http://127.0.0.1:8000/auth/users/",
+      url: "http://127.0.0.1:8000/auth/register/",
       data: createUser,
     })
       .then(function (response) {
@@ -32,17 +32,17 @@ class Authorization extends React.Component {
   };
 
   getAuthorization = (newAuth) => {
-    console.log(newAuth, "newUser - authorization");
     let userAuth = newAuth;
+    console.log(userAuth, "userAuth - authorization");
 
     axios({
       method: "post",
-      url: "http://127.0.0.1:8000/auth/token/",
+      url: "http://127.0.0.1:8000/auth/login/",
       data: userAuth,
     })
       .then(function (response) {
-        localStorage.setItem("token", response.data.token);
-        console.log(response.data.token, "response - Вітаю");
+        localStorage.setItem("token", `Bearer ${response.data.access}`);
+        console.log(response.data.access, "response - Вітаю");
       })
       .catch(function (error) {
         console.log(error, "error");

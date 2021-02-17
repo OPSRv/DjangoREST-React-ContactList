@@ -60,6 +60,7 @@ class AddContact extends React.Component {
       address: address,
       email: email,
       star: false,
+      user_id: "1",
     };
 
     this.props.addContact(newContact);

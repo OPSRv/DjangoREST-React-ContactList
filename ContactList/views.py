@@ -7,22 +7,15 @@ from rest_framework import status
 from ContactList.models import ContactListModel
 from ContactList.serializers import ContactListSerializer
 
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+# from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
-from rest_framework.views import APIView
-from rest_framework.exceptions import PermissionDenied
-
-
-
-
-
-
+from django.contrib.auth.models import User
 
 @api_view(['GET', 'POST', 'DELETE'])
+# @permission_classes([AllowAny])
 def contact_list(request):
-    # permission_class = permissions.IsAuthenticatedOrReadOnly
     if request.method == 'GET':
         contact = ContactListModel.objects.all()
         
@@ -48,6 +41,7 @@ def contact_list(request):
  
  
 @api_view(['GET', 'PUT', 'DELETE'])
+# @permission_classes([AllowAny])
 def contact_detail(request, pk):
     try: 
         contact = ContactListModel.objects.get(pk=pk) 
@@ -72,14 +66,10 @@ def contact_detail(request, pk):
     
         
 @api_view(['GET'])
+# @permission_classes([AllowAny])
 def contact_list_published(request):
     contacts = ContactListModel.objects.filter(published=True)
         
     if request.method == 'GET': 
         contacts_serializer = ContactListSerializer(contacts, many=True)
         return JsonResponse(contacts_serializer.data, safe=False)
-
-
-
-
-

@@ -28,7 +28,13 @@ class App extends React.Component {
   }
 
   UpdateContactList = () => {
-    fetch(this.URL)
+    const token = localStorage.token;
+    fetch(this.URL, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
       .then((responce) => {
         return responce.json();
       })
@@ -45,6 +51,25 @@ class App extends React.Component {
         }
       })
       .catch((err) => console.log(err));
+
+    // ContactDataService.getAll()
+    //   .then((responce) => {
+    //     return responce.json();
+    //     console.log(responce, "responce-INDEX");
+    //   })
+    //   .then((data) => {
+    //     if (data == null) {
+    //       this.setState({
+    //         List: [],
+    //       });
+    //       // console.log(List, "UpdateContactList - List");
+    //     } else {
+    //       this.setState({
+    //         List: data,
+    //       });
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   onSearch = (contactName) => {
@@ -89,6 +114,7 @@ class App extends React.Component {
   editContact = (id) => {
     const index = this.state.List.findIndex((elem) => elem.id === id);
     const currentContact = this.state.List[index];
+    console.log(currentContact, "currentContact- EDIT");
     this.setState({
       currentContact: currentContact,
     });
@@ -109,6 +135,7 @@ class App extends React.Component {
   addContact = (newContact) => {
     this.state.List.push(newContact);
     ContactDataService.create(newContact);
+    console.log(newContact);
     // console.log(newContact.email, "newContact email");
     // let ContactList = this.state.List.map((item) => item.email);
 
@@ -168,11 +195,7 @@ class App extends React.Component {
               )}
             />
 
-            <Route
-              path="/authorization"
-              component={Authorization}
-              render={() => <Authorization />}
-            />
+            <Route path="/authorization" render={() => <Authorization />} />
           </div>
           <Route component={NotFound} />
         </Switch>
