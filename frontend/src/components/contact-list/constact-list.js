@@ -21,7 +21,7 @@ const ContactList = ({
         phone={item.phone}
         email={item.email}
         star={item.star}
-        star={item.star}
+        user_id={item.username}
         isStar={() => isStar(item.id)}
         editContact={() => editContact(item.id)}
         onDeleteContact={() => onDeleteContact(item.id)}
@@ -29,6 +29,7 @@ const ContactList = ({
       />
     );
   });
+  console.log(ContactList, "ContactList");
   return (
     <Fragment>
       <div class="cards">

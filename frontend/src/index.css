@@ -27,14 +27,14 @@ h3 {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   min-width: 100vw;
-  background: linear-gradient(to right top, #3e92b6, #007558);
+  background: linear-gradient(to right top, #00b3ff, #d902e0);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .glass {
   background: white;
-  height: 600px;
+  height: 650px;
   width: 900px;
   background: linear-gradient(
     to right bottom,
@@ -95,3 +95,27 @@ h3 {
 /* div{
   border: 1px solid rgba(255, 0, 0, 0.144);
 } */
+#greeting{
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+
+#registerSiginIn,  #_registerSiginIn {
+  padding: 2px; /* Поля вокруг текста ссылки */
+  text-decoration: none; /* Убираем подчёркивание */
+  color: #00b3ff;
+  border-radius: 2rem;
+  background: rgb(rgb(109, 14, 14), green, blue);
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 5px;
+  padding: 10px;
+ }
+ #registerSiginIn:hover, #_registerSiginIn:hover {
+  background: rgba(212, 0, 255, 0.158); /* Цвет фона при наведении на ссылку курсора */
+  color: rgb(0, 195, 255); /* Новый цвет текста */
+  border-radius: 2rem;
+ }
+
+

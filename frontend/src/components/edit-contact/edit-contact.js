@@ -13,6 +13,7 @@ class EditContact extends React.Component {
     email: this.props.currentContact.email,
     image: this.props.currentContact.image,
     star: this.props.currentContact.star,
+    user_id: this.props.currentContact.user_id,
     isRedirect: false,
   };
 
@@ -56,6 +57,7 @@ class EditContact extends React.Component {
     delete data.isRedirect;
     console.log(data, "data -  в батьківський");
     let newEditContact = data;
+    console.log(newEditContact, "newEditContact");
     this.props.onEditCurrentContact(newEditContact);
 
     ContactDataService.update(id, data);

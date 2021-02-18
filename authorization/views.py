@@ -10,7 +10,6 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
 
-
 class MyObtainTokenPairView(TokenObtainPairView):
     permission_classes = (AllowAny,)
     serializer_class = MyTokenObtainPairSerializer
@@ -25,3 +24,4 @@ class CustomObtainAuthToken(ObtainAuthToken):
         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])
         return Response({'user_id': token.user_id,})
+

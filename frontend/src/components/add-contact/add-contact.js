@@ -11,6 +11,7 @@ class AddContact extends React.Component {
     address: "Rivne",
     email: "Jack@Jack.Jack",
     star: false,
+
     isRedirect: false,
   };
 
@@ -52,6 +53,10 @@ class AddContact extends React.Component {
     event.preventDefault();
     const { name, phone, image, gender, address, email, star } = this.state;
 
+    this.setState({
+      isRedirect: true,
+    });
+
     let newContact = {
       name: name,
       phone: phone,
@@ -59,15 +64,11 @@ class AddContact extends React.Component {
       gender: gender,
       address: address,
       email: email,
+      user_id: localStorage.user_id,
       star: false,
-      user_id: "1",
     };
-
+    console.log(newContact, "newContact");
     this.props.addContact(newContact);
-
-    this.setState({
-      isRedirect: true,
-    });
   };
 
   render() {

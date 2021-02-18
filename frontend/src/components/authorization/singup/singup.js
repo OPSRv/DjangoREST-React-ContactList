@@ -63,66 +63,62 @@ class SingUp extends React.Component {
     const { username, email, password, password2 } = this.state;
     return (
       <Fragment>
-        <div class="login-page">
-          <div class="form box">
-            <form className="register-form" onSubmit={this.onSendDataUs}>
-              <input
-                value={username}
-                onChange={this.getLogin}
-                type="text"
-                id="reg_login"
-                className="animateInput"
-                placeholder="login"
-                autocomplete="username"
-                name="username"
-                required
-              />
-              <input
-                value={email}
-                onChange={this.getEmail}
-                id="reg_email"
-                className="animateInput"
-                placeholder="email address"
-                name="email"
-                autocomplete="username email"
-                type="email"
-                required
-              />
+        <form className="register-form" onSubmit={this.onSendDataUs}>
+          <input
+            value={username}
+            onChange={this.getLogin}
+            type="text"
+            id="reg_login"
+            className="animateInput"
+            placeholder="login"
+            autocomplete="username"
+            name="username"
+            required
+          />
+          <input
+            value={email}
+            onChange={this.getEmail}
+            id="reg_email"
+            className="animateInput"
+            placeholder="email address"
+            name="email"
+            autocomplete="username email"
+            type="email"
+            required
+          />
 
-              <input
-                value={password}
-                onChange={this.getPassword}
-                type="password"
-                id="reg_password"
-                className="animateInput"
-                placeholder="password"
-                name="password"
-                autoComplete="new-password"
-                required
-              />
-              <input
-                value={password2}
-                onChange={this.getPasswordConfirm}
-                type="password"
-                id="reg_password2"
-                className="animateInput"
-                placeholder="password"
-                name="password"
-                autoComplete="current-password"
-                required
-              />
-              <button id="reg_btn" className="btn-auth">
-                create
-              </button>
-              <p className="message">
-                Already registered?{" "}
-                <Link to="/authorization" className="registerSiginIn">
-                  <span id="crateAccount">Sign In</span>
-                </Link>
-              </p>
-            </form>
-          </div>
-        </div>
+          <input
+            value={password}
+            onChange={this.getPassword}
+            type="password"
+            id="reg_password"
+            className="animateInput"
+            placeholder="password"
+            name="password"
+            autoComplete="new-password"
+            required
+          />
+          <input
+            value={password2}
+            onChange={this.getPasswordConfirm}
+            type="password"
+            id="reg_password2"
+            className="animateInput"
+            placeholder="password"
+            name="password"
+            autoComplete="current-password"
+            required
+          />
+          <button id="reg_btn" className="btn-auth">
+            create
+          </button>
+          <p className="message">
+            Already registered?{" "}
+            <Link to="/authorization" id="register">
+              Sign In
+            </Link>
+          </p>
+        </form>
       </Fragment>
     );
   }

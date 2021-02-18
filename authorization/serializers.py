@@ -13,6 +13,16 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Add custom claims
         token['username'] = user.username
         return token
+    
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        refresh = self.get_token(self.user)
+        data['refresh'] = str(refresh)
+        data['access'] = str(refresh.access_token)
+        # Add extra responses here
+        data['username'] = self.user.username
+        data['user_id'] = self.user.id
+        return data
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -44,3 +54,5 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+

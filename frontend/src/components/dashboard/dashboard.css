@@ -8,8 +8,9 @@
   text-align: center;
   background: linear-gradient(to right bottom,
       rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.3));
-  border-radius: 2rem;
+      rgba(2, 110, 211, 0.3));
+  border-radius: 2rem 0 0 2rem;
+  
 }
 
 .link {
@@ -59,6 +60,7 @@
 }
 .user-avatar {
   width: 100px;
+  margin-top: 5px;
 }
 
 .images-edit {
@@ -90,6 +92,7 @@
 .wrapper {
   perspective: 2000px;
   position: relative;
+  background-color: rgba(0, 105, 119, 0.363);
 }
 
 .front {}

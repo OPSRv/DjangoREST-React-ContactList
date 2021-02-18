@@ -34,7 +34,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #06cae4;
+    background: #002fff63;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -43,9 +43,12 @@
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+    border-radius: 2rem;
   }
   .form .btn-auth:hover,.form .btn-auth:active,.form .btn-auth:focus {
-    background: #43A047;
+    
+    background: #002fff3f;
+    font-size: 14px;
   }
   .form .message {
     margin: 15px 0 0;
@@ -53,7 +56,7 @@
     font-size: 12px;
   }
   .form .message a {
-    color: #4CAF50;
+    color: #3a61a8;
     text-decoration: none;
   }
   .container {
@@ -157,10 +160,22 @@
   #crateAccount{
     cursor: pointer;
   }
-  .registerSiginIn{
+#register{
     text-decoration: none;
+    color: royalblue;
+    font-size: 14px;
   }
-  .registerSiginIn:hover { 
+#register:hover { 
+    text-decoration: none; 
+    color: rgba(78, 188, 247, 0.934);
+   } 
+
+   #_register{
+    text-decoration: none;
+    color: royalblue;
+    font-size: 14px;
+  }
+#_register:hover { 
     text-decoration: none; 
     color: rgba(78, 188, 247, 0.934);
    } 

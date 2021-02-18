@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 
@@ -22,6 +23,9 @@ class App extends React.Component {
     currentContact: "",
     findContact: "",
     authorization: "",
+    username: localStorage.username,
+    user_id: localStorage.user_id,
+    loginСompleted: localStorage.loginСompleted,
   };
 
   componentDidMount() {
@@ -29,48 +33,32 @@ class App extends React.Component {
   }
 
   UpdateContactList = () => {
-    const token = localStorage.token;
-    fetch(this.URL, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    })
-      .then((responce) => {
-        return responce.json();
+    if (this.state.loginСompleted) {
+      const token = localStorage.token;
+      fetch(this.URL, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
       })
-      .then((data) => {
-        if (data == null) {
-          this.setState({
-            List: [],
-          });
-          // console.log(List, "UpdateContactList - List");
-        } else {
-          this.setState({
-            List: data,
-          });
-        }
-      })
-      .catch((err) => console.log(err));
-
-    // ContactDataService.getAll()
-    //   .then((responce) => {
-    //     return responce.json();
-    //     console.log(responce, "responce-INDEX");
-    //   })
-    //   .then((data) => {
-    //     if (data == null) {
-    //       this.setState({
-    //         List: [],
-    //       });
-    //       // console.log(List, "UpdateContactList - List");
-    //     } else {
-    //       this.setState({
-    //         List: data,
-    //       });
-    //     }
-    //   })
-    //   .catch((err) => console.log(err));
+        .then((responce) => {
+          return responce.json();
+        })
+        .then((data) => {
+          if (data == null) {
+            this.setState({
+              List: [],
+            });
+            // console.log(List, "UpdateContactList - List");
+          } else {
+            console.log(data, "data-data");
+            this.setState({
+              List: data,
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   onSearch = (contactName) => {
@@ -134,9 +122,9 @@ class App extends React.Component {
   };
 
   addContact = (newContact) => {
+    console.log(this.state.List, "this.state.List - INDEX");
     this.state.List.push(newContact);
     ContactDataService.create(newContact);
-    console.log(newContact);
     // console.log(newContact.email, "newContact email");
     // let ContactList = this.state.List.map((item) => item.email);
 
@@ -153,28 +141,75 @@ class App extends React.Component {
     // isAllValueMatched ? this.state.List.push(newContact) : console.log("false");
   };
 
-  // getAccount = (createUser) => {
-  //   console.log(createUser);
-  // };
+  getCreateAccount = (newUser) => {
+    console.log(newUser, "newUser - authorization");
+    let createUser = newUser;
+    console.log(createUser, "createUser - getCreateAccount - INDEX");
+    axios({
+      method: "post",
+      url: "http://127.0.0.1:8000/auth/register/",
+      data: createUser,
+    })
+      .then(function (response) {
+        console.log(response.status, "getCreateAccount - response - Вітаю");
+      })
+      .catch(function (error) {
+        console.log(error, "error getCreateAccount - INDEX");
+      });
+  };
+
+  getAuthorization = (newAuth) => {
+    console.log(newAuth);
+    let userAuth = newAuth;
+    axios({
+      method: "post",
+      url: "http://127.0.0.1:8000/auth/login/",
+      data: userAuth,
+    })
+      .then(function (response) {
+        console.log(response.data);
+        localStorage.setItem("token", `Bearer ${response.data.access}`);
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("user_id", response.data.user_id);
+        localStorage.setItem("loginСompleted", true);
+        console.log(
+          response.data.access,
+          "response - getAuthorization - INDEX"
+        );
+      })
+      .catch(function (error) {
+        console.log(error, "error - getAuthorization - INDEX");
+      });
+    this.setState({
+      username: localStorage.username,
+      user_id: localStorage.user_id,
+      loginСompleted: localStorage.loginСompleted,
+    });
+  };
 
   render() {
     const showContacts = this.onShowContactList(
       this.state.List,
       this.state.findContact
     );
-    console.log(localStorage.token);
+    const { loginСompleted } = this.state;
+    console.log(loginСompleted);
     return (
       <Router>
         <Dashboard />
         <Switch>
           <div class="games">
-            {localStorage.token ? (
-              <Header onSearch={this.onSearch} />
-            ) : (
-              <h1></h1>
-            )}
+            {loginСompleted ? <Header onSearch={this.onSearch} /> : <h1></h1>}
 
-            <Route path="/authorization" render={() => <Authorization />} />
+            <Route
+              path="/authorization"
+              render={() => (
+                <Authorization
+                  getCreateAccount={this.getCreateAccount}
+                  getAuthorization={this.getAuthorization}
+                />
+              )}
+            />
 
             <Route
               path="/"
@@ -188,6 +223,20 @@ class App extends React.Component {
                 />
               )}
             />
+
+            {/* <div class="login-page">
+              <div class="form box" id="greeting">
+                <h1>Hello! </h1>
+                <h2>You need to log in or register at the link:</h2>
+                <Link to="/authorization" id="_registerSiginIn">
+                  Sing in
+                </Link>
+
+                <Link to="/authorization/sing-up" id="registerSiginIn">
+                  Sing up
+                </Link>
+              </div>
+            </div> */}
 
             <Route
               path="/add"
