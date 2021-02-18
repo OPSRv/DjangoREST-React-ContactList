@@ -18,15 +18,20 @@ import axios from "axios";
 
 class App extends React.Component {
   URL = "http://127.0.0.1:8000/api/contacts";
-  state = {
-    List: [],
-    currentContact: "",
-    findContact: "",
-    authorization: "",
-    username: localStorage.username,
-    user_id: localStorage.user_id,
-    loginСompleted: localStorage.loginСompleted,
-  };
+
+  constructor(props) {
+    super(props);
+    const { username, user_id, loginСompleted } = localStorage;
+    this.state = {
+      List: [],
+      currentContact: "",
+      findContact: "",
+      authorization: "",
+      username: username,
+      user_id: user_id,
+      loginСompleted: loginСompleted,
+    };
+  }
 
   componentDidMount() {
     this.UpdateContactList();
@@ -194,7 +199,7 @@ class App extends React.Component {
       this.state.findContact
     );
     const { loginСompleted } = this.state;
-    console.log(loginСompleted);
+
     return (
       <Router>
         <Dashboard />
