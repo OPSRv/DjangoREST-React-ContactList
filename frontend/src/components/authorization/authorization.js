@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./authorization.css";
-import axios from "axios";
 
 import SingIn from "./singin/singin";
 import SingUp from "./singup/singup";
+import Modal from "./modal/modal";
 
 class Authorization extends React.Component {
   constructor(props) {
@@ -26,23 +26,16 @@ class Authorization extends React.Component {
       <React.Fragment>
         <Router>
           <Switch>
-            <div class="login-page">
-              <div class="form box">
-                <Route
-                  exact
-                  path="/authorization"
-                  render={() => (
-                    <SingIn getAuthorization={this.getAuthorization} />
-                  )}
-                />
-                <Route
-                  path="/authorization/sing-up"
-                  render={() => (
-                    <SingUp getCreateAccount={this.getCreateAccount} />
-                  )}
-                />
-              </div>
-            </div>
+            <Route exact path="/authorization" render={() => <Modal />} />
+            <Route
+              exact
+              path="/authorization/sing-in"
+              render={() => <SingIn getAuthorization={this.getAuthorization} />}
+            />
+            <Route
+              path="/authorization/sing-up"
+              render={() => <SingUp getCreateAccount={this.getCreateAccount} />}
+            />
           </Switch>
         </Router>
       </React.Fragment>

@@ -11,7 +11,6 @@ class AddContact extends React.Component {
     address: "Rivne",
     email: "Jack@Jack.Jack",
     star: false,
-
     isRedirect: false,
   };
 

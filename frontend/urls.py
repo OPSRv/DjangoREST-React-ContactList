@@ -1,10 +1,11 @@
-from django.urls import path, re_path
+from django.urls import path
 from .views import index
 
 urlpatterns = [
     path('', index),
     path('add', index),
-    path('authorization', index),
+    path('authorization/', index),
+    path('authorization/sing-in', index),
     path('authorization/sing-up', index),
-    re_path('edit', index),
+    path('edit', index),
 ]

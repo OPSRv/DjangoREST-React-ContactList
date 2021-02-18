@@ -49,9 +49,10 @@ class App extends React.Component {
             this.setState({
               List: [],
             });
-            // console.log(List, "UpdateContactList - List");
           } else {
-            console.log(data, "data-data");
+            if (data.detail == "Signature has expired.") {
+              console.log("asasasdad");
+            }
             this.setState({
               List: data,
             });
@@ -223,20 +224,6 @@ class App extends React.Component {
                 />
               )}
             />
-
-            {/* <div class="login-page">
-              <div class="form box" id="greeting">
-                <h1>Hello! </h1>
-                <h2>You need to log in or register at the link:</h2>
-                <Link to="/authorization" id="_registerSiginIn">
-                  Sing in
-                </Link>
-
-                <Link to="/authorization/sing-up" id="registerSiginIn">
-                  Sing up
-                </Link>
-              </div>
-            </div> */}
 
             <Route
               path="/add"

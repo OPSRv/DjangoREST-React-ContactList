@@ -101,21 +101,6 @@ h3 {
 
 }
 
-#registerSiginIn,  #_registerSiginIn {
-  padding: 2px; /* Поля вокруг текста ссылки */
-  text-decoration: none; /* Убираем подчёркивание */
-  color: #00b3ff;
-  border-radius: 2rem;
-  background: rgb(rgb(109, 14, 14), green, blue);
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 5px;
-  padding: 10px;
- }
- #registerSiginIn:hover, #_registerSiginIn:hover {
-  background: rgba(212, 0, 255, 0.158); /* Цвет фона при наведении на ссылку курсора */
-  color: rgb(0, 195, 255); /* Новый цвет текста */
-  border-radius: 2rem;
- }
+
 
 

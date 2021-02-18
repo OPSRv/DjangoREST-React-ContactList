@@ -21,7 +21,7 @@ const ContactList = ({
         phone={item.phone}
         email={item.email}
         star={item.star}
-        user_id={item.username}
+        user_id={item.user_id}
         isStar={() => isStar(item.id)}
         editContact={() => editContact(item.id)}
         onDeleteContact={() => onDeleteContact(item.id)}

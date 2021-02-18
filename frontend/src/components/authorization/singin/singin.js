@@ -43,36 +43,40 @@ class SingIn extends React.Component {
     const { username, password } = this.state;
     return (
       <Fragment>
-        <form class="register-form" onSubmit={this.onSendDataUs}>
-          <input
-            value={username}
-            onChange={this.getLogin}
-            type="text"
-            id="reg_login"
-            className="animateInput"
-            placeholder="login"
-            autocomplete="username"
-            name="username"
-            required
-          />
-          <input
-            onChange={this.getPassword}
-            type="password"
-            id="reg_password"
-            className="animateInput"
-            placeholder="password"
-            name="password"
-            autoComplete="current-password"
-            required
-          />
-          <button id="log_btn" className="btn-auth">
-            login
-          </button>
-          <p className="message">Not registered? </p>
-          <Link to="/authorization/sing-up" id="_register">
-            Create an account
-          </Link>
-        </form>
+        <div class="login-page">
+          <div class="form box">
+            <form class="register-form" onSubmit={this.onSendDataUs}>
+              <input
+                value={username}
+                onChange={this.getLogin}
+                type="text"
+                id="reg_login"
+                className="animateInput"
+                placeholder="login"
+                autocomplete="username"
+                name="username"
+                required
+              />
+              <input
+                onChange={this.getPassword}
+                type="password"
+                id="reg_password"
+                className="animateInput"
+                placeholder="password"
+                name="password"
+                autoComplete="current-password"
+                required
+              />
+              <button id="log_btn" className="btn-auth">
+                login
+              </button>
+              <p className="message">Not registered? </p>
+              <Link to="/authorization/sing-up" id="_register">
+                Create an account
+              </Link>
+            </form>
+          </div>
+        </div>
       </Fragment>
     );
   }
