@@ -1,0 +1,148 @@
+.btn_choose_sent input {
+  -webkit-appearance: none;
+  display: block;
+  margin: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 2rem;
+  cursor: pointer;
+  vertical-align: middle;
+  box-shadow: hsla(0,0%,100%,.15) 0 1px 1px, inset hsla(0,0%,0%,.5) 0 0 0 1px;
+  background-color: hsla(0,0%,0%,.2);
+      background-image: -webkit-radial-gradient( #fff 0%, #fff 15%, #fff 28%, #fff 70% );
+  background-repeat: no-repeat;
+  -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
+    -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+  outline: none;
+}
+.btn_choose_sent input:checked {
+  -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+    -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+}
+.btn_choose_sent input:active {
+  -webkit-transform: scale(1.5);
+  -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
+}
+
+
+
+/* The up/down direction logic */
+
+.btn_choose_sent input,
+.btn_choose_sent input:active {
+  background-position: 0 24px;
+}
+.btn_choose_sent input:checked {
+  background-position: 0 0;
+}
+.btn_choose_sent input:checked ~ input,
+ .btn_choose_sent input:checked ~ input:active {
+  background-position: 0 -24px;
+}
+
+.btn_choose_sent{
+	    background: #EF2D56;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(125, 147, 178, .3);
+    border: none; 
+     border-radius: 2rem;
+    font-size: 16px;
+    line-height: 10px;
+    padding:  16px 20px 16px 38px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 30px;
+    transition: all .3s;
+    height: auto;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.btn_choose_sent input{
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    top: 2px;
+}
+
+.btn_choose_sent input:after{
+	 position: absolute;
+    content: '';
+    width: 15rem;
+    left: 0;
+    right: 0;
+    /* background: red; */
+    /* z-index: -1; */
+    height: 40px;
+    top: -10px;
+}
+
+
+
+.bg_btn_chose_3{
+	background-color: #359dcc !important;
+    width: 120px;
+    opacity: .7;
+}
+.btn-save{
+  width: 300px;
+}
+.btn-save:hover{
+    background-color: #117cad !important;
+    transition: 0.5;
+}
+/*-=p=--=*/
+
+
+
+
+.btn_choose_sent_check_b{
+	  background: #EF2D56;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(125, 147, 178, .3);
+    border: none; 
+     border-radius: 2rem;
+    font-size: 16px;
+    line-height: 10px;
+    padding:  16px 20px 16px 46px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 30px;
+    transition: all .3s;
+    height: auto;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.add-wrapper{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.add-form{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.add-head{
+    margin-bottom: 50px;
+}
+.add-radio-btn{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  
+}

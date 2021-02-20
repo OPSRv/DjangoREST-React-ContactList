@@ -9,17 +9,18 @@
       rgba(255, 255, 255, 0.3)
     );
     border: none;
-    width: 50%;
+    width: 300px;
     padding: 0.5rem;
     border-radius: 2rem;
     margin-bottom: 3rem;
     margin: .3rem;
     outline:none;
     color: rgb(0, 75, 105);
+    font-size: 20px;
   }
   .edit-image{
-    width: 105px;
-    height: 105px;
+    width: 150px;
+    height: 150px;
     border-radius: 15px;
     margin: ;
   }

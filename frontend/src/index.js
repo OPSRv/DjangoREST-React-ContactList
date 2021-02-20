@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 
@@ -26,10 +26,10 @@ class App extends React.Component {
       List: [],
       currentContact: "",
       findContact: "",
-      authorization: "",
       username: username,
       user_id: user_id,
       loginСompleted: loginСompleted,
+      refresh: "",
     };
   }
 
@@ -37,9 +37,11 @@ class App extends React.Component {
     this.UpdateContactList();
   }
 
-  UpdateContactList = () => {
-    if (this.state.loginСompleted) {
+  UpdateContactList() {
+    if (localStorage.loginСompleted) {
+      console.log("ТУТ МИ У UpdateContactList - INDEX");
       const token = localStorage.token;
+
       fetch(this.URL, {
         headers: {
           "Content-Type": "application/json",
@@ -53,10 +55,11 @@ class App extends React.Component {
           if (data == null) {
             this.setState({
               List: [],
+              loginСompleted: true,
             });
           } else {
             if (data.detail == "Signature has expired.") {
-              console.log("asasasdad");
+              console.log("TOKEN FAILED");
             }
             this.setState({
               List: data,
@@ -65,7 +68,7 @@ class App extends React.Component {
         })
         .catch((err) => console.log(err));
     }
-  };
+  }
 
   onSearch = (contactName) => {
     this.setState({
@@ -128,23 +131,12 @@ class App extends React.Component {
   };
 
   addContact = (newContact) => {
-    console.log(this.state.List, "this.state.List - INDEX");
-    this.state.List.push(newContact);
     ContactDataService.create(newContact);
-    // console.log(newContact.email, "newContact email");
-    // let ContactList = this.state.List.map((item) => item.email);
-
-    // console.log(ContactList);
-
-    // let isAllValueMatched = true;
-
-    // ContactList.forEach((value) => {
-    //   if (value === newContact) {
-    //     isAllValueMatched = false;
-    //   }
-    // });
-
-    // isAllValueMatched ? this.state.List.push(newContact) : console.log("false");
+    this.state.List.push(newContact);
+    const newListAdd = this.state.List;
+    this.setState({
+      List: newListAdd,
+    });
   };
 
   getCreateAccount = (newUser) => {
@@ -173,15 +165,10 @@ class App extends React.Component {
       data: userAuth,
     })
       .then(function (response) {
-        console.log(response.data);
         localStorage.setItem("token", `Bearer ${response.data.access}`);
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("user_id", response.data.user_id);
         localStorage.setItem("loginСompleted", true);
-        console.log(
-          response.data.access,
-          "response - getAuthorization - INDEX"
-        );
       })
       .catch(function (error) {
         console.log(error, "error - getAuthorization - INDEX");
@@ -189,24 +176,30 @@ class App extends React.Component {
     this.setState({
       username: localStorage.username,
       user_id: localStorage.user_id,
-      loginСompleted: localStorage.loginСompleted,
+      loginСompleted: true,
     });
   };
 
   render() {
-    const showContacts = this.onShowContactList(
-      this.state.List,
-      this.state.findContact
-    );
-    const { loginСompleted } = this.state;
+    console.log("RENDER INDEX JS");
+    const { loginСompleted, user_id, List, findContact } = this.state;
+
+    const showContacts = this.onShowContactList(List, findContact);
 
     return (
       <Router>
-        <Dashboard />
+        <Dashboard
+          loginСompleted={this.state.loginСompleted}
+          username={this.state.username}
+          UpdateContactList={this.UpdateContactList}
+        />
         <Switch>
           <div class="games">
-            {loginСompleted ? <Header onSearch={this.onSearch} /> : <h1></h1>}
-
+            <Route
+              exact
+              path="/"
+              render={() => <Header onSearch={this.onSearch} />}
+            />
             <Route
               path="/authorization"
               render={() => (

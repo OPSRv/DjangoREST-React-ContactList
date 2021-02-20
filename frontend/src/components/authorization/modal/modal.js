@@ -30,8 +30,10 @@ class Modal extends React.Component {
         <div class="form box">
           <div className="modal" style={this.state.toggle ? display : hide}>
             <div className="modal-content">
-              <h1>Hello! </h1>
-              <h2>You need to log in or register at the link:</h2>
+              <h1 className="modal-head">Hello! </h1>
+              <h2 className="model-text">
+                You need to log in or register at the link:
+              </h2>
               <div id="modal_link">
                 <Link
                   to="/authorization/sing-in"

@@ -5,20 +5,20 @@
 }
 
 h1 {
-  color: #426696;
+  color: #494949;
   font-weight: 600;
   font-size: 3rem;
   opacity: 0.8;
 }
 h2,
 p {
-  color: #658ec6;
+  color: #eaeaea;
   font-weight: 500;
   opacity: 0.8;
 }
 
 h3 {
-  color: #426696;
+  color: #d4d4d4;
   font-weight: 600;
   opacity: 0.8;
 }
@@ -27,7 +27,7 @@ h3 {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
   min-width: 100vw;
-  background: linear-gradient(to right top, #00b3ff, #d902e0);
+  background: linear-gradient(to right top, #00b3ff, #02e02085);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,11 +36,10 @@ h3 {
   background: white;
   height: 650px;
   width: 900px;
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.3)
-  );
+  background: #C4FAFF;
+  background: -moz-linear-gradient(top, #C4FAFF 0%, #0C5954 100%, #635CFF 100%);
+  background: -webkit-linear-gradient(top, #C4FAFF 0%, #0C5954 100%, #635CFF 100%);
+  background: linear-gradient(to bottom, #C4FAFF 0%, #0C5954 100%, #635CFF 100%);
   border-radius: 2rem;
   z-index: 2;
   backdrop-filter: blur(2rem);

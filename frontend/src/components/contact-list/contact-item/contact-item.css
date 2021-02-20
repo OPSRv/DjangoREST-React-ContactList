@@ -5,13 +5,16 @@
     rgba(112, 112, 112, 0.24),
     rgba(255, 255, 255, 0.5)
   );
+
   border-radius: 1rem;
   margin: 1rem 0rem;
   padding: 1rem;
-  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+  box-shadow: 10px 10px 20px rgba(122, 122, 122, 0.212);
   justify-content: space-between;
   position: relative;
 width: 530px;
+
+
 }
 .card:hover {
   background: linear-gradient(

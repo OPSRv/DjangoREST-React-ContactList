@@ -7,13 +7,6 @@ import SingUp from "./singup/singup";
 import Modal from "./modal/modal";
 
 class Authorization extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      getAccount: true,
-    };
-  }
-
   getCreateAccount = (newUser) => {
     this.props.getCreateAccount(newUser);
   };
@@ -33,6 +26,7 @@ class Authorization extends React.Component {
               render={() => <SingIn getAuthorization={this.getAuthorization} />}
             />
             <Route
+              exact
               path="/authorization/sing-up"
               render={() => <SingUp getCreateAccount={this.getCreateAccount} />}
             />

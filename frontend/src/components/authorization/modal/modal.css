@@ -1,7 +1,7 @@
 #registerSiginIn,  #_registerSiginIn {
     padding: 2px; /* Поля вокруг текста ссылки */
     text-decoration: none; /* Убираем подчёркивание */
-    color: #00b3ff;
+    color: #f9f9f9;
     border-radius: 2rem;
     background: rgb(rgb(109, 14, 14), green, blue);
     font-size: 2rem;
@@ -10,12 +10,20 @@
     padding: 10px;
    }
    #registerSiginIn:hover, #_registerSiginIn:hover {
-    background: rgba(212, 0, 255, 0.158); /* Цвет фона при наведении на ссылку курсора */
-    color: rgb(0, 195, 255); /* Новый цвет текста */
+    background: rgba(0, 107, 76, 0.656); /* Цвет фона при наведении на ссылку курсора */
+    color: rgb(255, 255, 255); /* Новый цвет текста */
     border-radius: 2rem;
    }
    #modal_link{
        display: flex;
        flex-flow: row nowrap;
        padding: auto;
+   }
+
+   .modal-head{
+    color: #5d5d5d;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+   }
+   .model-text{
+    color: #202c2d;
    }

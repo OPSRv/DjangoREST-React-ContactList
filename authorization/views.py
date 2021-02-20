@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth.models import User
 from .serializers import RegisterSerializer
 from rest_framework import generics
-from rest_framework.authtoken.views import ObtainAuthToken
+# from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
@@ -19,9 +19,9 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
-class CustomObtainAuthToken(ObtainAuthToken):
-    def post(self, request, *args, **kwargs):
-        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
-        token = Token.objects.get(key=response.data['token'])
-        return Response({'user_id': token.user_id,})
+# class CustomObtainAuthToken(ObtainAuthToken):
+#     def post(self, request, *args, **kwargs):
+#         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+#         token = Token.objects.get(key=response.data['token'])
+#         return Response({'user_id': token.user_id,})
 

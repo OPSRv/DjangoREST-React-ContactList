@@ -1,9 +1,19 @@
 .games {
-    margin: 2rem;
+    margin: 2.1rem;
     display: flex;
     flex-direction: column;
     justify-content: start;
     width: 540px;
+
+    
+  }
+  #app{
+    -webkit-box-shadow: -2px 5px 15px 5px #606060; 
+    box-shadow: -2px 5px 15px 5px #606060;
+  }
+  input{
+    -webkit-box-shadow: -2px 5px 15px 5px #606060; 
+    box-shadow: -2px 5px 15px 5px #60606049;
   }
 .cards{
   overflow-x: hidden;
@@ -12,6 +22,7 @@
   flex-flow: column;
   justify-content: start;
   scroll-behavior: smooth;
+  
 }
 
 .cards::-webkit-scrollbar-track
@@ -28,7 +39,7 @@
 
 .cards::-webkit-scrollbar-thumb
 {
-	background-color: #00f7ff57;
+	background-color: #00747896;
 }
 
 .cards:hover{

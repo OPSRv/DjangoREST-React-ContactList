@@ -27,7 +27,6 @@ class ContactItem extends React.Component {
     } else {
       isNotstar = "far fa-star";
     }
-    // console.log(this.props, "props contact ");
     return (
       <div class="card">
         <div>

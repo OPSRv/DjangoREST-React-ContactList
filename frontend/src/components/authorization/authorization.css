@@ -11,12 +11,16 @@
   .form {
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
+    background: #8FCE19;
+    background: -moz-linear-gradient(-45deg, #8FCE19 0%, #4FA8C2 21%, #115919 100%);
+    background: -webkit-linear-gradient(-45deg, #8FCE19 0%, #4FA8C2 21%, #115919 100%);
+    background: linear-gradient(135deg, #8FCE19 0%, #4FA8C2 21%, #115919 100%);
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
     text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 5px 5px 15px 9px #404040; 
+    box-shadow: 5px 5px 15px 9px #404040;
     border-radius: 2rem;
   }
   .form input {
@@ -179,3 +183,7 @@
     text-decoration: none; 
     color: rgba(78, 188, 247, 0.934);
    } 
+
+   .animateInput{
+     border-radius: 2rem;
+   }

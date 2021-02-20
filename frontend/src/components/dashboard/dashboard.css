@@ -6,9 +6,10 @@
   align-items: center;
   justify-content: space-evenly;
   text-align: center;
-  background: linear-gradient(to right bottom,
-      rgba(255, 255, 255, 0.7),
-      rgba(2, 110, 211, 0.3));
+  background: #8FCE19;
+  background: -moz-linear-gradient(-45deg, #8FCE19 0%, #4FA8C2 21%, #115919 100%);
+  background: -webkit-linear-gradient(-45deg, #8FCE19 0%, #4FA8C2 21%, #115919 100%);
+  background: linear-gradient(135deg, #8FCE19 0%, #4FA8C2 21%, #115919 100%);
   border-radius: 2rem 0 0 2rem;
   
 }
@@ -57,6 +58,9 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  align-self: center;
+  
+  
 }
 .user-avatar {
   width: 100px;
@@ -76,26 +80,22 @@
 .dash-link {
   text-decoration: none;
   transition: .5;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .dash-links:hover {
-  color: rgb(101, 173, 255);
+  color: rgba(187, 187, 187, 0.95);
 }
 
 .add-images {
   width: 50px;
 }
 
-
-
-
 .wrapper {
   perspective: 2000px;
   position: relative;
-  background-color: rgba(0, 105, 119, 0.363);
+  background-color: rgba(0, 225, 255, 0.363);
 }
-
-.front {}
 
 .back {
   transform: rotateY(180deg);
@@ -138,4 +138,23 @@
   to {
     transform: rotateY(540deg);
   }
+}
+.dashboard-font-icons {
+display: flex;
+flex-flow: row nowrap;
+position: absolute;
+top: 33px;
+left: 15px;
+}
+
+.dashboard-icons:before{
+  font-size: 17px;
+  color: rgb(0, 3, 185);
+  opacity: .6;
+  cursor: pointer;
+  padding: 5px;
+}
+.dashboard-icons:hover{
+  color: rgb(0, 3, 209);
+  opacity: .6;
 }
