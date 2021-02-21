@@ -5,38 +5,10 @@ import { Link } from "react-router-dom";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: "",
-      loginСompleted: "",
-    };
   }
 
   getClearLocalStorage = (event) => {
     localStorage.clear();
-  };
-
-  componentDidMount() {
-    this.updataList();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.loginСompleted !== prevProps.loginСompleted) {
-      this.updataList();
-      this.setState({
-        username: localStorage.username,
-      });
-    }
-  }
-
-  updataList = () => {
-    const { loginСompleted } = this.props;
-    console.log(loginСompleted, "loginСompleted");
-    if (!loginСompleted) {
-      return;
-    }
-    this.setState({
-      username: localStorage.username,
-    });
   };
 
   render() {
@@ -45,13 +17,13 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <div className="dashboard-font-icons">
-          {!loginСompleted ? (
-            <Link to="/authorization/sing-in">
-              <i class="fas fa-user-plus dashboard-icons"></i>
-            </Link>
-          ) : (
+          {loginСompleted ? (
             <Link to="/authorization" onClick={this.getClearLocalStorage}>
               <i class="fas fa-sign-in-alt dashboard-icons" title="Log out"></i>
+            </Link>
+          ) : (
+            <Link to="/authorization/sing-in">
+              <i class="fas fa-user-plus dashboard-icons"></i>
             </Link>
           )}
         </div>

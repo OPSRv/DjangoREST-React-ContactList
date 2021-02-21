@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 
   UpdateContactList() {
-    if (localStorage.loginСompleted) {
+    if (this.state.loginСompleted) {
       console.log("ТУТ МИ У UpdateContactList - INDEX");
       const token = localStorage.token;
 
@@ -178,12 +178,13 @@ class App extends React.Component {
       user_id: localStorage.user_id,
       loginСompleted: true,
     });
+    this.UpdateContactList();
   };
 
   render() {
     console.log("RENDER INDEX JS");
     const { loginСompleted, user_id, List, findContact } = this.state;
-
+    console.log(List);
     const showContacts = this.onShowContactList(List, findContact);
 
     return (

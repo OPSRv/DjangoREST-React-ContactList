@@ -15,6 +15,7 @@ class Authorization extends React.Component {
   };
 
   render() {
+    console.log(this.props.newAuth, "this.props.newAuth");
     return (
       <React.Fragment>
         <Router>
