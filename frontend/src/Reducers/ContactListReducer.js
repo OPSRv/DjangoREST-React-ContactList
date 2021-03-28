@@ -40,6 +40,7 @@ const ContactListReducer = (state = initialState, action) => {
 
     case AUTHORIZATION:
       return {
+        ...state,
         loading: true,
         authorization: action.payload,
       };

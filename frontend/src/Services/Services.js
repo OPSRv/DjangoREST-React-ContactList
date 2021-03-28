@@ -85,7 +85,7 @@
 //       });
 //   };
 
-//   getAuthorization = (newAuth) => {
+//   singInorization = (newAuth) => {
 //     console.log(newAuth);
 //     let userAuth = newAuth;
 //     axios({
@@ -99,7 +99,7 @@
 //         localStorage.setItem("isAuthenticated", true);
 //       })
 //       .catch(function (error) {
-//         console.log(error, "error - getAuthorization - INDEX");
+//         console.log(error, "error - singInorization - INDEX");
 //       });
 //     this.setState({
 //       username: localStorage.username,

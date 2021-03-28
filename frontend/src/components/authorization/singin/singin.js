@@ -1,27 +1,16 @@
 import React, { useState } from "react";
-import ApiService from "../../../Services/ApiService";
 import "../authorization.css";
 //redux
 import { connect } from "react-redux";
-import { getAuth } from "../../../Actions/ContactListActions";
+import { singIn } from "../../../Actions/ContactListActions";
 
 // https://reactrouter.com/web/example/auth-workflow
 
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
-const SingIn = ({ authorization, loading }) => {
+const SingIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const [isAuthenticated, setisAuthenticated] = useState(
-    authorization.isAuthenticated
-  );
 
   const toogle = (event) => {
     setUsername(username);
@@ -34,31 +23,8 @@ const SingIn = ({ authorization, loading }) => {
       username: username,
       password: password,
     };
-
-    ApiService.authorization(newAuth)
-      .then(function (response) {
-        localStorage.setItem("token", `Bearer ${response.data.access}`);
-        localStorage.setItem("username", response.data.username);
-        localStorage.setItem("isAuthenticated", true);
-        localStorage.setItem("user_id", response.data.user_id);
-
-        authorization = {
-          token: response.data.access,
-          username: response.data.username,
-          user_id: response.data.user_id,
-          isAuthenticated: true,
-        };
-        setisAuthenticated(!isAuthenticated);
-        getAuth(authorization);
-      })
-      .catch(function (error) {
-        alert("Please try again");
-      });
+    singIn(newAuth);
   };
-
-  // if (isAuthenticated) {
-  //   return <Redirect to="/" render={() => <ContactList />} />;
-  // }
 
   return (
     <React.Fragment>
@@ -99,12 +65,7 @@ const SingIn = ({ authorization, loading }) => {
   );
 };
 
-const mapStateToProps = ({ ContactListReducer }) => {
-  const { authorization, loading } = ContactListReducer;
-  return { authorization, loading };
+const mapDispatchToProps = {
+  singIn,
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return dispatch(() => getAuth);
-};
-export default connect(mapStateToProps, mapDispatchToProps)(SingIn);
+export default connect(null, mapDispatchToProps)(SingIn);

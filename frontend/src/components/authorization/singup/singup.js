@@ -2,6 +2,8 @@ import { Redirect } from "react-router-dom";
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "../authorization.css";
+import axios from "axios";
+import ApiService from "../../../Services/ApiService";
 
 class SingUp extends React.Component {
   constructor(props) {
@@ -38,9 +40,7 @@ class SingUp extends React.Component {
 
   onSendDataUs = (event) => {
     event.preventDefault();
-    this.setState({
-      isRedirect: true,
-    });
+
     const { username, email, password, password2 } = this.state;
     if (password === password2) {
       let newUser = {
@@ -49,10 +49,25 @@ class SingUp extends React.Component {
         password: password,
         password2: password2,
       };
-      this.props.getCreateAccount(newUser);
+
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:8000/auth/register/",
+        data: newUser,
+      })
+        .then(function (response) {
+          console.log(response.status, "getCreateAccount - response - Вітаю");
+        })
+        .catch(function (error) {
+          console.log(error, "error getCreateAccount - INDEX");
+        });
     } else {
       alert("Passwords do not match");
     }
+
+    this.setState({
+      isRedirect: true,
+    });
   };
 
   render() {
@@ -126,4 +141,5 @@ class SingUp extends React.Component {
     );
   }
 }
+
 export default SingUp;

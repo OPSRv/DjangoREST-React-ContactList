@@ -9,7 +9,7 @@ const hide = {
   display: "none",
 };
 
-class Modal extends React.Component {
+class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -59,4 +59,4 @@ class Modal extends React.Component {
   }
 }
 
-export default Modal;
+export default AuthForm;

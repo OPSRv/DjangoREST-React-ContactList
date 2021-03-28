@@ -19,7 +19,7 @@ export const getContactList = () => async (dispatch) => {
       return List;
     })
     .catch((err) => console.log(err, "CONTACT_LIST ERR ApiService"));
-  store.dispatch({
+  return store.dispatch({
     type: LOAD_CONTACT_LIST,
     payload: res,
   });
@@ -33,10 +33,35 @@ export const addContacts = async (newContact) => {
   });
 };
 
-export const getAuth = (authorization) => {
+export const singIn = async (newAuth) => {
+  const res = await ApiService.authorization(newAuth)
+    .then(function (response) {
+      localStorage.setItem("token", `Bearer ${response.data.access}`);
+      localStorage.setItem("username", response.data.username);
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("user_id", response.data.user_id);
+
+      let authorization = {
+        token: response.data.access,
+        username: response.data.username,
+        user_id: response.data.user_id,
+        isAuthenticated: true,
+      };
+      return authorization;
+    })
+    .catch((error) => {
+      alert("Please try again");
+    });
   store.dispatch({
     type: AUTHORIZATION,
-    payload: authorization,
+    payload: res,
+  });
+};
+
+export const singOut = () => {
+  store.dispatch({
+    type: AUTHORIZATION,
+    payload: {},
   });
 };
 

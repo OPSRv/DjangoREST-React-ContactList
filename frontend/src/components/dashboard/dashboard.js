@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Authorization from "../authorization/authorization";
 import { connect } from "react-redux";
 
+import { singOut } from "../../Actions/ContactListActions";
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,7 @@ class Dashboard extends Component {
 
   getClearLocalStorage = (event) => {
     localStorage.clear();
+    singOut();
   };
 
   // https://medium.com/@jxstanford/django-rest-framework-file-upload-e4bc8de669c0#.o2cqt4wl1
@@ -102,6 +105,6 @@ const mapStateToProps = ({ ContactListReducer }) => {
   return { authorization };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { singOut };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
