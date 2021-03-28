@@ -1,0 +1,9 @@
+export const LOAD_CONTACT_LIST = "LOAD_CONTACT_LIST";
+export const AUTHORIZATION = "AUTHORIZATION";
+export const REDIRECT = "REDIRECT";
+export const SEARCH = "SEARCH";
+export const ADD_CONTACT = "ADD_CONTACT";
+export const EDIT_CONTACT = "EDIT_CONTACT";
+export const DELETE_CONTACT = "DELETE_CONTACT";
+export const IS_STAR = "IS_STAR";
+export const SAVE_EDIT_CONTACT = "SAVE_EDIT_CONTACT";

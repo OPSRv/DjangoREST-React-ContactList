@@ -49,7 +49,6 @@ class SingUp extends React.Component {
         password: password,
         password2: password2,
       };
-      console.log(newUser, "newUser SING UP");
       this.props.getCreateAccount(newUser);
     } else {
       alert("Passwords do not match");

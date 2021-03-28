@@ -1,7 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import ContactDataService from "../services/Service";
+import ApiService from "../../Services/ApiService";
 import "./add-contact.css";
+import { addContacts } from "../../Actions/ContactListActions";
+
+import { connect } from "react-redux";
 
 class AddContact extends React.Component {
   state = {
@@ -13,7 +16,7 @@ class AddContact extends React.Component {
     email: "Kelly@gmail.com",
     star: false,
     isRedirect: false,
-    loginСompleted: true,
+    isAuthenticated: true,
   };
 
   getAvatar = (event) => {
@@ -61,10 +64,6 @@ class AddContact extends React.Component {
     event.preventDefault();
     const { name, phone, image, gender, address, email, star } = this.state;
 
-    this.setState({
-      isRedirect: true,
-    });
-
     let newContact = {
       name: name,
       phone: phone,
@@ -75,9 +74,15 @@ class AddContact extends React.Component {
       user_id: localStorage.user_id,
       star: false,
     };
-    console.log(newContact, "newContact");
-    this.props.addContact(newContact);
+
+    addContacts(newContact);
+
+    this.setState({
+      isRedirect: true,
+    });
   };
+
+  componentDidMount() {}
 
   render() {
     const {
@@ -88,7 +93,7 @@ class AddContact extends React.Component {
       image,
       gender,
       star,
-      loginСompleted,
+      isAuthenticated,
     } = this.state;
     const URL = `https://randomuser.me/api/portraits/${gender}/${image}.jpg`;
 
@@ -101,7 +106,7 @@ class AddContact extends React.Component {
         <div className="add-head">
           <h1>Add contact</h1>
         </div>
-        {loginСompleted ? (
+        {isAuthenticated ? (
           <div className="container">
             <div className="row">
               <div className="add-form">
@@ -201,4 +206,10 @@ class AddContact extends React.Component {
   }
 }
 
-export default AddContact;
+const mapStateToProps = ({ ContactListReducer }) => {};
+
+const mapDispatchToProps = {
+  addContacts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddContact);

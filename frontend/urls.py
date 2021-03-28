@@ -8,4 +8,6 @@ urlpatterns = [
     path('authorization/sing-in', index),
     path('authorization/sing-up', index),
     path('edit', index),
+    path('contact', index),
+    
 ]

@@ -19,9 +19,3 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
-# class CustomObtainAuthToken(ObtainAuthToken):
-#     def post(self, request, *args, **kwargs):
-#         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
-#         token = Token.objects.get(key=response.data['token'])
-#         return Response({'user_id': token.user_id,})
-

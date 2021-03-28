@@ -1,19 +1,23 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import ContactDataService from "../services/Service";
+import ApiService from "../../Services/ApiService";
 import "./edit-contact.css";
+
+import { connect } from "react-redux";
+
+import { saveEditContact } from "../../Actions/ContactListActions";
 
 class EditContact extends React.Component {
   state = {
-    id: this.props.currentContact.id,
-    name: this.props.currentContact.name,
-    address: this.props.currentContact.address,
-    gender: this.props.currentContact.gender,
-    phone: this.props.currentContact.phone,
-    email: this.props.currentContact.email,
-    image: this.props.currentContact.image,
-    star: this.props.currentContact.star,
-    user_id: this.props.currentContact.user_id,
+    id: this.props.currentContact[0].id,
+    user_id: this.props.currentContact[0].user_id,
+    name: this.props.currentContact[0].name,
+    address: this.props.currentContact[0].address,
+    phone: this.props.currentContact[0].phone,
+    email: this.props.currentContact[0].email,
+    image: this.props.currentContact[0].image,
+    gender: this.props.currentContact[0].gender,
+    star: this.props.currentContact[0].star,
     isRedirect: false,
   };
 
@@ -52,15 +56,9 @@ class EditContact extends React.Component {
 
   onSendData = (event) => {
     event.preventDefault();
-    const { id, name, address, phone, email, image, gender, star } = this.state;
     const data = this.state;
     delete data.isRedirect;
-    console.log(data, "data -  в батьківський");
-    let newEditContact = data;
-    console.log(newEditContact, "newEditContact");
-    this.props.onEditCurrentContact(newEditContact);
-
-    ContactDataService.update(id, data);
+    saveEditContact(data);
 
     this.setState({
       isRedirect: true,
@@ -69,6 +67,8 @@ class EditContact extends React.Component {
 
   render() {
     const { name, address, phone, email, image, gender } = this.state;
+    const currentContact = JSON.parse(localStorage.getItem("currentContact"));
+    const update = () => updateContact(currentContact);
     const URL = `https://api.randomuser.me/portraits/${gender}/${image}.jpg`;
     if (this.state.isRedirect) {
       return <Redirect to="/" />;
@@ -78,11 +78,7 @@ class EditContact extends React.Component {
         <h1>Edit contact</h1>
         <div className="row">
           <div>
-            {image.length !== 0 ? (
-              <img className="edit-image" src={URL} />
-            ) : (
-              <h3>No foto</h3>
-            )}
+            <img className="edit-image" src={URL} />
           </div>
           <div className="edit-status">
             <form onSubmit={this.onSendData}>
@@ -147,4 +143,13 @@ class EditContact extends React.Component {
   }
 }
 
-export default EditContact;
+const mapStateToProps = ({ ContactListReducer }) => {
+  const { currentContact } = ContactListReducer;
+  return { currentContact };
+};
+
+const mapDispatchToProps = {
+  saveEditContact,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditContact);

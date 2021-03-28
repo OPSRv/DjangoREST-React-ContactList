@@ -1,85 +1,110 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import ApiService from "../../../Services/ApiService";
 import "../authorization.css";
-class SingIn extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-      isRedirect: false,
-    };
-  }
+//redux
+import { connect } from "react-redux";
+import { getAuth } from "../../../Actions/ContactListActions";
 
-  getLogin = (event) => {
-    this.setState({
-      username: event.target.value,
-    });
+// https://reactrouter.com/web/example/auth-workflow
+
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
+const SingIn = ({ authorization, loading }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [isAuthenticated, setisAuthenticated] = useState(
+    authorization.isAuthenticated
+  );
+
+  const toogle = (event) => {
+    setUsername(username);
+    setPassword(password);
   };
-  getPassword = (event) => {
-    this.setState({
-      password: event.target.value,
-    });
-  };
-  onSendDataUs = (event) => {
+
+  const onSendDataUs = (event) => {
     event.preventDefault();
-    this.setState({
-      isRedirect: true,
-    });
-    const { username, password } = this.state;
-
     let newAuth = {
       username: username,
       password: password,
     };
-    this.props.getAuthorization(newAuth);
+
+    ApiService.authorization(newAuth)
+      .then(function (response) {
+        localStorage.setItem("token", `Bearer ${response.data.access}`);
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("isAuthenticated", true);
+        localStorage.setItem("user_id", response.data.user_id);
+
+        authorization = {
+          token: response.data.access,
+          username: response.data.username,
+          user_id: response.data.user_id,
+          isAuthenticated: true,
+        };
+        setisAuthenticated(!isAuthenticated);
+        getAuth(authorization);
+      })
+      .catch(function (error) {
+        alert("Please try again");
+      });
   };
 
-  render() {
-    if (this.state.isRedirect) {
-      return <Redirect to="/" />;
-    }
-    const { username, password } = this.state;
-    return (
-      <Fragment>
-        <div class="login-page">
-          <div class="form box">
-            <form class="register-form" onSubmit={this.onSendDataUs}>
-              <input
-                value={username}
-                onChange={this.getLogin}
-                type="text"
-                id="reg_login"
-                className="animateInput"
-                placeholder="login"
-                autocomplete="username"
-                name="username"
-                required
-              />
-              <input
-                onChange={this.getPassword}
-                type="password"
-                id="reg_password"
-                className="animateInput"
-                placeholder="password"
-                name="password"
-                autoComplete="current-password"
-                required
-              />
-              <button id="log_btn" className="btn-auth">
-                login
-              </button>
-              <p className="message">Not registered? </p>
-              <Link to="/authorization/sing-up" id="_register">
-                Create an account
-              </Link>
-            </form>
-          </div>
-        </div>
-      </Fragment>
-    );
-  }
-}
+  // if (isAuthenticated) {
+  //   return <Redirect to="/" render={() => <ContactList />} />;
+  // }
 
-export default SingIn;
+  return (
+    <React.Fragment>
+      <div class="login-page">
+        <div class="form box">
+          <form class="register-form" onSubmit={onSendDataUs}>
+            <input
+              onChange={(event) => setUsername(event.target.value)}
+              type="text"
+              id="reg_login"
+              className="animateInput"
+              placeholder="login"
+              autocomplete="username"
+              name="username"
+              required
+            />
+            <input
+              onChange={(event) => setPassword(event.target.value)}
+              type="password"
+              id="reg_password"
+              className="animateInput"
+              placeholder="password"
+              name="password"
+              autoComplete="current-password"
+              required
+            />
+            <button id="log_btn" className="btn-auth">
+              login
+            </button>
+            <p className="message">Not registered? </p>
+            <Link to="/authorization/sing-up" id="_register">
+              Create an account
+            </Link>
+          </form>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
+
+const mapStateToProps = ({ ContactListReducer }) => {
+  const { authorization, loading } = ContactListReducer;
+  return { authorization, loading };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return dispatch(() => getAuth);
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SingIn);

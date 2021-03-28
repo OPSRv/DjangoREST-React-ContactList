@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ContactDataService from "../../services/Service";
+
 import "./contact-item.css";
 
 class ContactItem extends React.Component {
   render() {
-    // console.log("Inside contact item => ", this.props);
     const {
       name,
       gender,

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./dashboard.css";
 import { Link } from "react-router-dom";
+import Authorization from "../authorization/authorization";
+import { connect } from "react-redux";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -11,13 +13,17 @@ class Dashboard extends Component {
     localStorage.clear();
   };
 
+  // https://medium.com/@jxstanford/django-rest-framework-file-upload-e4bc8de669c0#.o2cqt4wl1
+
   render() {
-    const { username, loginСompleted } = this.props;
-    console.log(this.props.loginСompleted, "this.props DACH");
+    const { authorization } = this.props;
+
+    const { username, isAuthenticated } = authorization;
+
     return (
       <div className="dashboard">
         <div className="dashboard-font-icons">
-          {loginСompleted ? (
+          {isAuthenticated ? (
             <Link to="/authorization" onClick={this.getClearLocalStorage}>
               <i class="fas fa-sign-in-alt dashboard-icons" title="Log out"></i>
             </Link>
@@ -28,7 +34,7 @@ class Dashboard extends Component {
           )}
         </div>
 
-        {loginСompleted ? (
+        {isAuthenticated ? (
           <div className="user">
             <p>Signed in as</p>
             <h3>{username}</h3>
@@ -47,7 +53,7 @@ class Dashboard extends Component {
           <h2></h2>
         )}
 
-        {loginСompleted ? (
+        {isAuthenticated ? (
           <div className="links">
             <div className="link">
               <img
@@ -91,4 +97,11 @@ class Dashboard extends Component {
     );
   }
 }
-export default Dashboard;
+const mapStateToProps = ({ ContactListReducer }) => {
+  const { authorization } = ContactListReducer;
+  return { authorization };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
