@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
-    'jet',
+#    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'authorization',
 
     
-    'djoser',
+    # 'djoser',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
 ]
@@ -53,19 +53,19 @@ JWT_AUTH = {
     'JWT_VERIFY': True,
     # 'JWT_VERIFY_EXPIRATION': True,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
-'JWT_VERIFY_EXPIRATION': False,
+    'JWT_VERIFY_EXPIRATION': False,
 
-    
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'localtion-to-my-own-handler-file.my_custom_jwt_response_payload_handler',
 }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
@@ -106,6 +106,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
