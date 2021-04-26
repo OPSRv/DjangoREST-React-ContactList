@@ -1,23 +1,21 @@
 # Contact list(REST API)
+### `pip3 install -r requirements.txt`
 
-pip3 install -r requirements.txt
+### `python3 manage.py runserver`
 
-python3 manage.py runserver
+### `cd frontend:`
 
-cd frontend:
+### `npm install`
 
-npm install
-
-npm run dev
-
+### `npm run dev`
 
 
-📚 
-#Stack: 
+
+### Stack: 
 Django REST framework, ReactJS, ReduxJS/Redux-thunk, JSON Web Token
 
-🖥
-#Project description: 
+
+### Project description: 
 the application is a list of contacts with the ability to register, authorize, add, delete and edit the list, as well as available contact search.
 
 
