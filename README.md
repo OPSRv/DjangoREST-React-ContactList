@@ -11,3 +11,4 @@ npm install
 
 npm run dev
 
+![alt text](1.png "Описание будет тут")
